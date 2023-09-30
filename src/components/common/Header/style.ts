@@ -10,14 +10,15 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
 
-`
+  position: fixed;
+`;
 export const Menu = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
   color: ${Color.gray[500]};
-  >p{
+  > p {
     cursor: pointer;
   }
-`
+`;
