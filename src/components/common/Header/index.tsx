@@ -1,4 +1,4 @@
-import Logo from "assets/logo";
+import Logo from "assets/icon/logo";
 import * as S from "./style";
 import { BodyLarge } from "styles/text";
 
