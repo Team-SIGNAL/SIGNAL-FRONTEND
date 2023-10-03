@@ -3,7 +3,7 @@ import Layout from "components/pages/Landing/Layout";
 import { BodyLarge, Title, TitleLarge } from "styles/text";
 import { landingMock } from "assets/index";
 import { IntroduceData } from "./introduce";
-import Login from "components/pages/Login";
+import Login from "components/pages/Landing/Login";
 import SignUp from "components/pages/Landing/SignUp";
 
 function Landing() {
