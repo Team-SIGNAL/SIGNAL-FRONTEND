@@ -12,14 +12,14 @@ export const BackDrop = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 100;
+  z-index: 100 ;
 `;
 
 export const Container = styled.div`
     background-color: white;
-    width: 42%;
     min-width: 450px;
-    padding: 25px;
+    padding: 40px;
+    border-radius: 10px;
     display: flex;
     gap: 40px;
     flex-direction: column;
