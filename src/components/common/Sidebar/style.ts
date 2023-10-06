@@ -4,7 +4,8 @@ import Color from "styles/color";
 export const Container = styled.nav`
   width: 260px;
   height: 100vh;
-  background-color: ${Color.gray[100]};
+  /* background-color: ${Color.gray[100]}; */
+  background-color: #F5FFFE;
   padding: 20px;
 
   display: flex;
@@ -28,19 +29,13 @@ export const ProfileContainer = styled.div`
   display: flex;
   gap: 10px;
   align-items: center;
-  height: min-content;
+  height: 70px;
   > img {
     width: 50px;
     height: 50px;
   }
 `;
 
-export const Line = styled.hr`
-  width: 100%;
-  height: 0px;
-
-  border: 1px solid ${Color.gray[300]};
-`;
 
 export const MenuContainer = styled.div`
   display: flex;
@@ -57,7 +52,7 @@ export const MenuContainer = styled.div`
 
 export const Menus = styled.button<{ select: boolean }>`
   background-color: ${({ select }) =>
-    select ? Color.primary[500] : Color.gray[100]};
+    select ? Color.primary[300] :"#F5FFFE"};
   color: ${({ select }) => (select ? Color.white : Color.gray[500])};
   border: none;
   padding: 10px;

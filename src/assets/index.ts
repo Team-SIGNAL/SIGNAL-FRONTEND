@@ -6,3 +6,4 @@ export { default as contentsImg } from "./img/landing/contentsImg.png";
 export { default as hospitalImg } from "./img/landing/hospitalImg.png";
 
 export { default as logoImg } from "./img/logo.png";
+export { default as exprofileing } from "./img/exprofileimg.png";
