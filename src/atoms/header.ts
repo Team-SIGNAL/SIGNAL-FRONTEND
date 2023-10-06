@@ -1,7 +1,7 @@
 import { atom } from "recoil";
 
-export const loginModalAtom = atom<boolean>({
-  key: "loginModalAtom",
+export const signInModalAtom = atom<boolean>({
+  key: "signInModalAtom",
   default: false,
 });
 
