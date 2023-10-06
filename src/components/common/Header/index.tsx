@@ -1,11 +1,11 @@
-import Logo from "assets/icon/logo";
 import * as S from "./style";
-import { BodyLarge } from "styles/text";
 import { useSetRecoilState } from "recoil";
-import { loginModalAtom, signupModalAtom } from "atoms/header";
+import { signInModalAtom, signupModalAtom } from "atoms/header";
+import { BodyLarge } from "styles/text";
+import Logo from "assets/icon/logo";
 
 function Header() {
-  const setLoginModal = useSetRecoilState(loginModalAtom);
+  const setSignInModal = useSetRecoilState(signInModalAtom);
   const setSignupModal = useSetRecoilState(signupModalAtom);
 
   return (
@@ -14,7 +14,7 @@ function Header() {
       <S.Menu>
         <BodyLarge
           onClick={() => {
-            setLoginModal(true);
+            setSignInModal(true);
           }}
         >
           병원 로그인

@@ -18,11 +18,12 @@
     "baseUrl": "src",
     "paths": {
       "components/*": ["components/*"],
-      "pages/*":["pages/*"],
-      "styles/*":["styles/*"],
-      "assets/*":["assets/*"]
+      "pages/*": ["pages/*"],
+      "styles/*": ["styles/*"],
+      "assets/*": ["assets/*"],
+      "atoms/*": ["atoms/*"]
     }
   },
   "include": ["src"],
-  "typeRoots": ["src/types"],
+  "typeRoots": ["src/types"]
 }

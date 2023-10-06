@@ -1,16 +1,14 @@
 import { BodyStrong, SubTitle } from "styles/text";
 import * as S from "./style";
-import ProfileImg from "assets/exprofileimg.png";
-
+import { exprofileing } from "assets/index";
 function Sidebar() {
   let role = "user";
   return (
     <S.Container>
       <S.ProfileContainer>
-        <img src={ProfileImg} alt="profileImg" />
+        <img src={exprofileing} alt="profileImg" />
         <SubTitle>가나다라 병원</SubTitle>
       </S.ProfileContainer>
-      <S.Line />
       {role === "user" ? (
         <>
           <S.MenuContainer>
