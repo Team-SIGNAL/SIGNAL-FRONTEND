@@ -1,12 +1,17 @@
 import styled from "styled-components";
 import Color from "./color";
 
-export const Button = styled.button`
+export const Button = styled.button<{
+  backColor?: string;
+  color?: string;
+  width?: string;
+}>`
   display: flex;
-  background-color: ${Color.primary[300]};
-  color: ${Color.white};
+  color: ${({ color }) => (color ? color : Color.white)};
+  background-color: ${({ backColor }) =>
+    backColor ? backColor : Color.primary[300]};
   padding: 12px;
-  width: 100%;
+  width: ${({ width }) => (width ? width : "100%")}%;
   border: none;
   justify-content: center;
   align-items: center;
@@ -17,7 +22,7 @@ export const Button = styled.button`
   font-weight: 400;
   line-height: 24px;
   font-weight: 600;
-  &:active{
+  &:active {
     filter: brightness(1.1);
   }
 `;

@@ -65,9 +65,12 @@ function SignIn() {
           <S.ButtonContainer>
             <Button onClick={onClickSignIn}>로그인</Button>
             <div>
+              <div>
+
               <Body onClick={() => {}}>아이디 찾기</Body>
               <hr />
               <Body onClick={() => {}}>비밀번호 찾기</Body>
+              </div>
             </div>
           </S.ButtonContainer>
         </Modal>
