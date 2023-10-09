@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import { SignInProps, SignUpProps } from "./auth.type";
+import { SignInProps, SignUpProps, UserDataProps } from "./auth.type";
 
 export const SignInAtom = atom<SignInProps>({
   key: "signInInputs",
@@ -19,3 +19,9 @@ export const SignUpAtom = atom<SignUpProps>({
   },
 });
 
+export const UserDataAtom = atom<UserDataProps>({
+  key: "userDatas",
+  default: {
+    user_id: "",
+  },
+});

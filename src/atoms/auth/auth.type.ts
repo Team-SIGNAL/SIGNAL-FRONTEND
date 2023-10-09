@@ -9,3 +9,7 @@ export type SignUpProps = {
   account_id: string;
   password: string;
 };
+
+export type UserDataProps = {
+  user_id: string;
+};

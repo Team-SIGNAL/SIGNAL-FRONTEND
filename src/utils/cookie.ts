@@ -11,5 +11,5 @@ export const setCookie = (
 
 export const getCookie = (name: string) => cookie.get(name);
 
-export const delCookie = (name: string, option: any) =>
+export const delCookie = (name: string, option: any = { path: "/" }) =>
   cookie.remove(name, { ...option });
