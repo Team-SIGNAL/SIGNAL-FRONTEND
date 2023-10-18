@@ -1,4 +1,4 @@
-import * as S from "./style";
+import * as _ from "./style";
 import { useMutation } from "@tanstack/react-query";
 import { BodyLarge } from "styles/text";
 import { DeleteSecession } from "utils/apis/users";
@@ -17,11 +17,11 @@ function Secess() {
     secessionMutate();
   };
   return (
-    <S.Container>
+    <_.Container>
       <button onClick={secessOnClick}>
         <BodyLarge>회원탈퇴</BodyLarge>
       </button>
-    </S.Container>
+    </_.Container>
   );
 }
 

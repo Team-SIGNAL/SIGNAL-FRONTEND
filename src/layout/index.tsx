@@ -1,17 +1,17 @@
 import Sidebar from "components/common/Sidebar";
-import * as S from "./style";
+import * as _ from "./style";
 import { LayoutProps } from "./type";
 import { TitleLarge } from "styles/text";
 
 function Layout({ children }: LayoutProps) {
   return (
-    <S.Container>
+    <_.Container>
       <Sidebar />
-      <S.ChildrenContainer>
+      <_.ChildrenContainer>
         <TitleLarge>병원 정보 페이지</TitleLarge>
         {children}
-      </S.ChildrenContainer>
-    </S.Container>
+      </_.ChildrenContainer>
+    </_.Container>
   );
 }
 

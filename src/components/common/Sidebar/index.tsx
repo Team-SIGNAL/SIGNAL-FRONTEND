@@ -1,53 +1,53 @@
 import { BodyStrong, SubTitle } from "styles/text";
-import * as S from "./style";
+import * as _ from "./style";
 import { exprofileing } from "assets/index";
 function Sidebar() {
   let role = "user";
   return (
-    <S.Container>
-      <S.ProfileContainer>
+    <_.Container>
+      <_.ProfileContainer>
         <img src={exprofileing} alt="profileImg" />
         <SubTitle>가나다라 병원</SubTitle>
-      </S.ProfileContainer>
+      </_.ProfileContainer>
       {role === "user" ? (
         <>
-          <S.MenuContainer>
+          <_.MenuContainer>
             <BodyStrong>Menu</BodyStrong>
             <div>
-              <S.Menus select={true}>
+              <_.Menus select={true}>
                 <BodyStrong>메뉴</BodyStrong>
-              </S.Menus>
-              <S.Menus select={false}>
+              </_.Menus>
+              <_.Menus select={false}>
                 <BodyStrong>커뮤니티</BodyStrong>
-              </S.Menus>
-              <S.Menus select={false}>
+              </_.Menus>
+              <_.Menus select={false}>
                 <BodyStrong>추천</BodyStrong>
-              </S.Menus>
+              </_.Menus>
             </div>
-          </S.MenuContainer>
-          <S.MenuContainer>
+          </_.MenuContainer>
+          <_.MenuContainer>
             <BodyStrong>User</BodyStrong>
             <div>
-              <S.Menus select={false}>
+              <_.Menus select={false}>
                 <BodyStrong>병원 정보</BodyStrong>
-              </S.Menus>
+              </_.Menus>
             </div>
-          </S.MenuContainer>
+          </_.MenuContainer>
         </>
       ) : (
-        <S.MenuContainer>
+        <_.MenuContainer>
           <BodyStrong>Menu</BodyStrong>
           <div>
-            <S.Menus select={true}>
+            <_.Menus select={true}>
               <BodyStrong>계정 승인</BodyStrong>
-            </S.Menus>
-            <S.Menus select={false}>
+            </_.Menus>
+            <_.Menus select={false}>
               <BodyStrong>커뮤니티</BodyStrong>
-            </S.Menus>
+            </_.Menus>
           </div>
-        </S.MenuContainer>
+        </_.MenuContainer>
       )}
-    </S.Container>
+    </_.Container>
   );
 }
 

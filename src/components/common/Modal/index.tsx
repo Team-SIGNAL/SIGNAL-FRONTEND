@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import * as S from "./style";
+import * as _ from "./style";
 import { ModalProps } from "./type";
 
 function Modal({ setModal, children }: ModalProps) {
@@ -9,13 +9,13 @@ function Modal({ setModal, children }: ModalProps) {
   }, []);
 
   return (
-    <S.BackDrop
+    <_.BackDrop
       onClick={() => {
         setModal(false);
       }}
     >
-      <S.Container onClick={(e) => e.stopPropagation()}>{children}</S.Container>
-    </S.BackDrop>
+      <_.Container onClick={(e) => e.stopPropagation()}>{children}</_.Container>
+    </_.BackDrop>
   );
 }
 

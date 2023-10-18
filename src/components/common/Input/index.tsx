@@ -1,5 +1,5 @@
 import { BodyLarge } from "styles/text";
-import * as S from "./style";
+import * as _ from "./style";
 import { InputProps } from "./type";
 
 function Input({
@@ -11,18 +11,18 @@ function Input({
   value,
 }: InputProps) {
   return (
-    <S.Container>
-      <S.Label>
+    <_.Container>
+      <_.Label>
         <BodyLarge>{label}</BodyLarge>
-      </S.Label>
-      <S.Input
+      </_.Label>
+      <_.Input
         onChange={onChange}
         type={type}
         placeholder={placeholder}
         name={name}
         value={value}
       />
-    </S.Container>
+    </_.Container>
   );
 }
 

@@ -1,5 +1,5 @@
 import { exprofileing } from "assets/index";
-import * as S from "./style";
+import * as _ from "./style";
 import { BodyLarge, Title } from "styles/text";
 import { Button } from "styles/button";
 import { delCookie } from "utils/cookie";
@@ -13,17 +13,17 @@ function Profile() {
     alertSuccess("로그아웃되었습니다.");
   }
   return (
-    <S.Container>
-      <S.ProfileContainer>
+    <_.Container>
+      <_.ProfileContainer>
         <img src={exprofileing} />
-        <S.InfoContainer>
+        <_.InfoContainer>
           <Title>가나다라 병원</Title>
           <BodyLarge>010-1234-1234</BodyLarge>
-        </S.InfoContainer>
-      </S.ProfileContainer>
+        </_.InfoContainer>
+      </_.ProfileContainer>
 
       <Button onClick={logoutOnClick} backColor={Color.gray[300]} color={Color.gray[500]}>로그아웃</Button>
-    </S.Container>
+    </_.Container>
   );
 }
 
