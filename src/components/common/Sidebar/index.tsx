@@ -2,7 +2,7 @@ import { BodyStrong, SubTitle } from "styles/text";
 import * as S from "./style";
 import { exprofileing } from "assets/index";
 function Sidebar() {
-  let role = "user";
+  let role = "user"; // api 연동시 이 부분 알려줄 예정
   return (
     <S.Container>
       <S.ProfileContainer>
