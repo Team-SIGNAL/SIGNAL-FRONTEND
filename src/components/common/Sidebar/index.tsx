@@ -1,53 +1,54 @@
 import { BodyStrong, SubTitle } from "styles/text";
-import * as S from "./style";
+import * as _ from "./style";
 import { exprofileing } from "assets/index";
+import { useLocation } from "react-router-dom";
 function Sidebar() {
-  let role = "user"; // api 연동시 이 부분 알려줄 예정
+  const { pathname } = useLocation();
   return (
-    <S.Container>
-      <S.ProfileContainer>
+    <_.Container>
+      <_.ProfileContainer>
         <img src={exprofileing} alt="profileImg" />
         <SubTitle>가나다라 병원</SubTitle>
-      </S.ProfileContainer>
-      {role === "user" ? (
+      </_.ProfileContainer>
+      {pathname.split("/")[1] === "hospital" ? (
         <>
-          <S.MenuContainer>
+          <_.MenuContainer>
             <BodyStrong>Menu</BodyStrong>
             <div>
-              <S.Menus select={true}>
+              <_.Menus $isselect={true}>
                 <BodyStrong>메뉴</BodyStrong>
-              </S.Menus>
-              <S.Menus select={false}>
+              </_.Menus>
+              <_.Menus $isselect={false}>
                 <BodyStrong>커뮤니티</BodyStrong>
-              </S.Menus>
-              <S.Menus select={false}>
+              </_.Menus>
+              <_.Menus $isselect={false}>
                 <BodyStrong>추천</BodyStrong>
-              </S.Menus>
+              </_.Menus>
             </div>
-          </S.MenuContainer>
-          <S.MenuContainer>
+          </_.MenuContainer>
+          <_.MenuContainer>
             <BodyStrong>User</BodyStrong>
             <div>
-              <S.Menus select={false}>
+              <_.Menus $isselect={false}>
                 <BodyStrong>병원 정보</BodyStrong>
-              </S.Menus>
+              </_.Menus>
             </div>
-          </S.MenuContainer>
+          </_.MenuContainer>
         </>
       ) : (
-        <S.MenuContainer>
+        <_.MenuContainer>
           <BodyStrong>Menu</BodyStrong>
           <div>
-            <S.Menus select={true}>
+            <_.Menus $isselect={true}>
               <BodyStrong>계정 승인</BodyStrong>
-            </S.Menus>
-            <S.Menus select={false}>
+            </_.Menus>
+            <_.Menus $isselect={false}>
               <BodyStrong>커뮤니티</BodyStrong>
-            </S.Menus>
+            </_.Menus>
           </div>
-        </S.MenuContainer>
+        </_.MenuContainer>
       )}
-    </S.Container>
+    </_.Container>
   );
 }
 
