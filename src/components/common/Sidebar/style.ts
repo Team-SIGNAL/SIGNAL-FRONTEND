@@ -4,7 +4,7 @@ import Color from "styles/color";
 export const Container = styled.nav`
   width: 260px;
   height: 100vh;
-  background-color: #E3F9E6;
+  background-color: #e3f9e6;
   padding: 20px;
 
   display: flex;
@@ -54,22 +54,24 @@ export const Menus = styled.button<{ $isselect: boolean }>`
       ? css`
           background-color: ${Color.primary[100]};
           color: ${Color.white};
+          &:hover {
+            filter: brightness(1.1);
+          }
+          &:active {
+            filter: brightness(1);
+          }
         `
       : css`
-          background-color:transparent;
+          background-color: transparent;
           color: ${Color.gray};
-          `};
           &:hover {
-            color: ${Color.primary[500]};
+            color: ${Color.primary[100]};
             background-color: white;
           }
-  &:hover {
-    box-shadow: 0px 0px 4px 0px ${Color.gray[300]};
-    z-index: 1;
-  }
-  &:active {
-    box-shadow: none;
-  }
+          &:active{
+            filter: brightness(0.97);
+          }
+        `};
   transition: 0.1s;
   border: none;
   padding: 10px;

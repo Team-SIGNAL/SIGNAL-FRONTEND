@@ -12,4 +12,8 @@ export const ChildrenContainer = styled.div`
   flex-direction: column;
   gap: 30px;
   width: 100%;
+  transition: 0.5s ease;
+
+  @media screen and (max-width: 900px) {
+    margin-left: 0px;  }
 `;

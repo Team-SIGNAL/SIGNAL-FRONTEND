@@ -1,15 +1,15 @@
 import Sidebar from "components/common/Sidebar";
 import * as S from "./style";
-import { LayoutProps } from "./type";
 import { TitleLarge } from "styles/text";
+import { Outlet } from "react-router-dom";
 
-function Layout({ children }: LayoutProps) {
+function Layout() {
   return (
     <S.Container>
       <Sidebar />
       <S.ChildrenContainer>
         <TitleLarge>병원 정보 페이지</TitleLarge>
-        {children}
+        <Outlet />
       </S.ChildrenContainer>
     </S.Container>
   );

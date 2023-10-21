@@ -14,9 +14,14 @@ function App() {
         <Route path="/hospital">
           {/* 병원 관계자 url  */}
           <Route path="my" element={<MyPage />} />
+          <Route path="rec" element={<MyPage />} />
           <Route path="feed" element={<FeedList />} />
         </Route>
-        <Route path="/admin">{/* 관리자 url  */}</Route>
+        <Route path="/admin">
+          {/* 관리자 url  */}
+          <Route path="account" element={< ></>} />
+          <Route path="feed" element={<FeedList />} />
+        </Route>
       </Route>
     </Routes>
   );
