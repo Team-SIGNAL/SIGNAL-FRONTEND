@@ -1,53 +1,79 @@
 import { BodyStrong, SubTitle } from "styles/text";
-import * as S from "./style";
+import * as _ from "./style";
 import { exprofileing } from "assets/index";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+
 function Sidebar() {
-  let role = "user"; // api 연동시 이 부분 알려줄 예정
+  const { pathname } = useLocation();
+  const nav = useNavigate();
+  const [path, setPath] = useState<string[]>([]);
+  useEffect(() => {
+    setPath(pathname.split("/"));
+  }, [pathname]);
   return (
-    <S.Container>
-      <S.ProfileContainer>
-        <img src={exprofileing} alt="profileImg" />
-        <SubTitle>가나다라 병원</SubTitle>
-      </S.ProfileContainer>
-      {role === "user" ? (
+    <_.Container>
+      {path[1] === "hospital" ? (
         <>
-          <S.MenuContainer>
+          <_.ProfileContainer onClick={() => nav("/hospital/my")}>
+            <img src={exprofileing} alt="profileImg" />
+            <SubTitle>가나다라 병원</SubTitle>
+          </_.ProfileContainer>
+          <_.MenuContainer>
             <BodyStrong>Menu</BodyStrong>
             <div>
-              <S.Menus select={true}>
+              <_.Menus
+                $isselect={path[2] === undefined}
+                onClick={() => nav("/hospital")}
+              >
                 <BodyStrong>메뉴</BodyStrong>
-              </S.Menus>
-              <S.Menus select={false}>
+              </_.Menus>
+              <_.Menus
+                $isselect={path[2] === "feed"}
+                onClick={() => nav("/hospital/feed")}
+              >
                 <BodyStrong>커뮤니티</BodyStrong>
-              </S.Menus>
-              <S.Menus select={false}>
+              </_.Menus>
+              <_.Menus
+                $isselect={path[2] === "rec"}
+                onClick={() => nav("/hospital/rec")}
+              >
                 <BodyStrong>추천</BodyStrong>
-              </S.Menus>
+              </_.Menus>
             </div>
-          </S.MenuContainer>
-          <S.MenuContainer>
+          </_.MenuContainer>
+          <_.MenuContainer>
             <BodyStrong>User</BodyStrong>
             <div>
-              <S.Menus select={false}>
+              <_.Menus
+                $isselect={path[2] === "my"}
+                onClick={() => nav("/hospital/my")}
+              >
                 <BodyStrong>병원 정보</BodyStrong>
-              </S.Menus>
+              </_.Menus>
             </div>
-          </S.MenuContainer>
+          </_.MenuContainer>
         </>
       ) : (
-        <S.MenuContainer>
+        <_.MenuContainer>
           <BodyStrong>Menu</BodyStrong>
           <div>
-            <S.Menus select={true}>
+            <_.Menus
+              $isselect={path[2] === "account"}
+              onClick={() => nav("/admin/account")}
+            >
               <BodyStrong>계정 승인</BodyStrong>
-            </S.Menus>
-            <S.Menus select={false}>
+            </_.Menus>
+            <_.Menus
+              $isselect={path[2] === "feed"}
+              onClick={() => nav("/admin/feed")}
+            >
               <BodyStrong>커뮤니티</BodyStrong>
-            </S.Menus>
+            </_.Menus>
           </div>
-        </S.MenuContainer>
+        </_.MenuContainer>
       )}
-    </S.Container>
+    </_.Container>
   );
 }
 
