@@ -3,7 +3,7 @@ import Layout from "layout";
 // hospitla
 import Landing from "./pages/Landing";
 import MyPage from "pages/MyPage";
-import FeedList from "pages/FeedList";
+import FeedList from "pages/Feed";
 // admin
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
         </Route>
         <Route path="/admin">
           {/* 관리자 url  */}
-          <Route path="account" element={< ></>} />
+          <Route path="" element={< ></>} />
           <Route path="feed" element={<FeedList />} />
         </Route>
       </Route>

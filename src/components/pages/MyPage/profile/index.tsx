@@ -13,23 +13,21 @@ function Profile() {
     alertSuccess("로그아웃되었습니다.");
   };
   return (
-<<<<<<< HEAD
     <_.Container>
       <_.ProfileContainer>
-        <img src={exprofileing} />
-        <_.InfoContainer>
-=======
-    <S.Container>
-      <S.ProfileContainer>
         <img src={exprofileing} alt="profile img" />
-        <S.InfoContainer>
->>>>>>> develop
+        <_.InfoContainer>
           <Title>가나다라 병원</Title>
           <BodyLarge>010-1234-1234</BodyLarge>
         </_.InfoContainer>
       </_.ProfileContainer>
-
-      <Button onClick={logoutOnClick} backColor={Color.gray[300]} color={Color.gray[500]}>로그아웃</Button>
+      <Button
+        onClick={logoutOnClick}
+        backColor={Color.gray[300]}
+        color={Color.gray[500]}
+      >
+        로그아웃
+      </Button>
     </_.Container>
   );
 }
