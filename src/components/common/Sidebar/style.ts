@@ -1,11 +1,10 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Color from "styles/color";
 
 export const Container = styled.nav`
   width: 260px;
   height: 100vh;
-  /* background-color: ${Color.gray[100]}; */
-  background-color: #F5FFFE;
+  background-color: #e3f9e6;
   padding: 20px;
 
   display: flex;
@@ -36,7 +35,6 @@ export const ProfileContainer = styled.div`
   }
 `;
 
-
 export const MenuContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -50,10 +48,31 @@ export const MenuContainer = styled.div`
   }
 `;
 
-export const Menus = styled.button<{ select: boolean }>`
-  background-color: ${({ select }) =>
-    select ? Color.primary[300] :"#F5FFFE"};
-  color: ${({ select }) => (select ? Color.white : Color.gray[500])};
+export const Menus = styled.button<{ $isselect: boolean }>`
+  ${({ $isselect }) =>
+    $isselect
+      ? css`
+          background-color: ${Color.primary[100]};
+          color: ${Color.white};
+          &:hover {
+            filter: brightness(1.1);
+          }
+          &:active {
+            filter: brightness(1);
+          }
+        `
+      : css`
+          background-color: transparent;
+          color: ${Color.gray};
+          &:hover {
+            color: ${Color.primary[100]};
+            background-color: white;
+          }
+          &:active{
+            filter: brightness(0.97);
+          }
+        `};
+  transition: 0.1s;
   border: none;
   padding: 10px;
   border-radius: 8px;
