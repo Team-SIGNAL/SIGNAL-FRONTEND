@@ -2,11 +2,12 @@ import { BodyLarge } from "styles/text";
 import * as _ from "./style";
 import { InputProps } from "./type";
 
+/** placeholder, value, onChange 필수 */
 function Input({
   label,
+  placeholder,
   onChange,
   type = "string",
-  placeholder,
   name,
   value,
 }: InputProps) {
