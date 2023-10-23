@@ -1,4 +1,4 @@
-import * as S from "./style";
+import * as _ from "./style";
 import { useSetRecoilState } from "recoil";
 import { signInModalAtom, signupModalAtom } from "atoms/header";
 import { BodyLarge } from "styles/text";
@@ -9,9 +9,9 @@ function Header() {
   const setSignupModal = useSetRecoilState(signupModalAtom);
 
   return (
-    <S.Container>
+    <_.Container>
       <Logo />
-      <S.Menu>
+      <_.Menu>
         <BodyLarge
           onClick={() => {
             setSignInModal(true);
@@ -26,8 +26,8 @@ function Header() {
         >
           병원 등록하기
         </BodyLarge>
-      </S.Menu>
-    </S.Container>
+      </_.Menu>
+    </_.Container>
   );
 }
 

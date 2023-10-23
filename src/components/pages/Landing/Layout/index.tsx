@@ -1,13 +1,13 @@
-import * as S from "./style";
+import * as _ from "./style";
 import Header from "components/common/Header";
 import { LayoutProps } from "./type";
 
 function Layout({ children }: LayoutProps) {
   return (
-    <S.Container>
+    <_.Container>
       <Header />
-      <S.ChildrenContainer>{children}</S.ChildrenContainer>
-    </S.Container>
+      <_.ChildrenContainer>{children}</_.ChildrenContainer>
+    </_.Container>
   );
 }
 

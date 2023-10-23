@@ -5,7 +5,7 @@ export const Container = styled.div`
 `;
 export const ChildrenContainer = styled.div`
   margin-left: 260px;
-  padding: 50px;
+  padding: 50px 100px;
   height: 100vh;
 
   display: flex;

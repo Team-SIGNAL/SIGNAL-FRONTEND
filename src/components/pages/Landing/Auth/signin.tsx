@@ -1,4 +1,4 @@
-import * as S from "./style";
+import * as _ from "./style";
 import { logoImg } from "assets/index";
 import { useState } from "react";
 //recoil
@@ -57,8 +57,8 @@ function SignIn() {
     <>
       {signInModal && (
         <Modal setModal={setSignInModal}>
-          <S.Logo src={logoImg} />
-          <S.InputContainer>
+          <_.Logo src={logoImg} />
+          <_.InputContainer>
             <Input
               label="아이디"
               placeholder="아이디를 입력해주세요"
@@ -73,8 +73,8 @@ function SignIn() {
               value={signInValue.password}
               name="password"
             />
-          </S.InputContainer>
-          <S.ButtonContainer>
+          </_.InputContainer>
+          <_.ButtonContainer>
             <Button onClick={onClickSignIn}>로그인</Button>
             <div>
               <div>
@@ -83,7 +83,7 @@ function SignIn() {
                 <Body onClick={() => {}}>비밀번호 찾기</Body>
               </div>
             </div>
-          </S.ButtonContainer>
+          </_.ButtonContainer>
         </Modal>
       )}
     </>

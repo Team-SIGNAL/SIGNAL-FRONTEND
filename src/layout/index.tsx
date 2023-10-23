@@ -1,17 +1,29 @@
 import Sidebar from "components/common/Sidebar";
-import * as S from "./style";
+import * as _ from "./style";
 import { TitleLarge } from "styles/text";
 import { Outlet } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { nowPathAtom } from "atoms/path";
+import { useEffect, useState } from "react";
 
 function Layout() {
+  const path = useRecoilValue(nowPathAtom);
+  const [pageName, setPageName ] = useState<string>("");
+  useEffect(()=>{
+    if(path[1] === "hospital" && path[2] === undefined) setPageName("병원 예약")
+    else if(path[1] === "admin" && path[2] === undefined) setPageName("병원 승인")
+    else if(path[2] === "feed") setPageName("커뮤니티")
+    else if(path[2] === "rec") setPageName("추천")
+    else if(path[2] === "my") setPageName("병원 정보")
+  },[path])
   return (
-    <S.Container>
+    <_.Container>
       <Sidebar />
-      <S.ChildrenContainer>
-        <TitleLarge>병원 정보 페이지</TitleLarge>
+      <_.ChildrenContainer>
+        <TitleLarge>{pageName}</TitleLarge>
         <Outlet />
-      </S.ChildrenContainer>
-    </S.Container>
+      </_.ChildrenContainer>
+    </_.Container>
   );
 }
 

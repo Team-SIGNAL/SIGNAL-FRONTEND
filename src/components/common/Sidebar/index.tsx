@@ -2,15 +2,17 @@ import { BodyStrong, SubTitle } from "styles/text";
 import * as _ from "./style";
 import { exprofileing } from "assets/index";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useRecoilState } from "recoil";
+import { nowPathAtom } from "atoms/path";
 
 function Sidebar() {
   const { pathname } = useLocation();
   const nav = useNavigate();
-  const [path, setPath] = useState<string[]>([]);
+  const [path, setPath] = useRecoilState(nowPathAtom);
   useEffect(() => {
     setPath(pathname.split("/"));
-  }, [pathname]);
+  }, [pathname, setPath]);
   return (
     <_.Container>
       {path[1] === "hospital" ? (
@@ -59,8 +61,8 @@ function Sidebar() {
           <BodyStrong>Menu</BodyStrong>
           <div>
             <_.Menus
-              $isselect={path[2] === "account"}
-              onClick={() => nav("/admin/account")}
+              $isselect={path[2] === undefined}
+              onClick={() => nav("/admin")}
             >
               <BodyStrong>계정 승인</BodyStrong>
             </_.Menus>

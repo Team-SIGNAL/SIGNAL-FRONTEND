@@ -7,3 +7,4 @@ export { default as hospitalImg } from "./img/landing/hospitalImg.png";
 
 export { default as logoImg } from "./img/logo.png";
 export { default as exprofileing } from "./img/exprofileimg.png";
+export { default as summaryDefaultImg } from "./img/summaryDefaultImg.png";

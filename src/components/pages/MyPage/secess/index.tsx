@@ -1,11 +1,10 @@
 import { useRecoilValue } from "recoil";
-import * as S from "./style";
+import * as _ from "./style";
 import { useMutation } from "@tanstack/react-query";
 import { BodyLarge } from "styles/text";
 import { DeleteSecession } from "utils/apis/users";
 import { alertError, alertSuccess } from "utils/toastify";
 import { UseIdAtom } from "atoms/user";
-
 
 function Secess() {
   /** user_id value */
@@ -25,11 +24,11 @@ function Secess() {
     secessionMutate(user_id);
   };
   return (
-    <S.Container>
+    <_.Container>
       <button onClick={secessOnClick}>
         <BodyLarge>회원탈퇴</BodyLarge>
       </button>
-    </S.Container>
+    </_.Container>
   );
 }
 

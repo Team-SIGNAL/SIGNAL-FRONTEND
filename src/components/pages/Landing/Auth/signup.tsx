@@ -1,4 +1,4 @@
-import * as S from "./style";
+import * as _ from "./style";
 import { logoImg } from "assets/index";
 import { useState } from "react";
 //recoil
@@ -95,8 +95,8 @@ function SignUp() {
     <>
       {signupModal && (
         <Modal setModal={setSignupModal}>
-          <S.Logo src={logoImg} />
-          <S.InputContainer>
+          <_.Logo src={logoImg} />
+          <_.InputContainer>
             <Input
               label="병원 이름"
               placeholder="병원 이름을 입력해주세요"
@@ -135,7 +135,7 @@ function SignUp() {
               }}
               value={passwordCheck}
             />
-          </S.InputContainer>
+          </_.InputContainer>
           <Button onClick={onClickSignup}>회원가입</Button>
         </Modal>
       )}
