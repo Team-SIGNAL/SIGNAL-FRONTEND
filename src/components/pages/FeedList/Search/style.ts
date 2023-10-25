@@ -4,3 +4,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: end;
 `;
+export const LeftContainer = styled.div`
+  width: 35%;
+  min-width: 300px;
+`;
