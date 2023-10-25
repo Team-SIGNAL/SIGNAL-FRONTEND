@@ -1,13 +1,13 @@
 import * as _ from "./style";
-import Search from "components/pages/Feed/Search";
-import List from "components/pages/Feed/List";
-
+import Content from "components/pages/Feed/Content";
+import Comment from "components/pages/Feed/Comment";
 function Feed() {
   return (
     <_.Container>
-      <Search />
-      <List />
+      <Content />
+      <Comment/>
     </_.Container>
   );
 }
+
 export default Feed;
