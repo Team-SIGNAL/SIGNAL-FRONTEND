@@ -10,7 +10,13 @@ function Input({
   type = "string",
   name,
   value,
+  enterSpace,
 }: InputProps) {
+  const onKeyDownEvent = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.keyCode === 13 && enterSpace) {
+      enterSpace();
+    }
+  };
   return (
     <_.Container>
       <_.Label>
@@ -22,6 +28,7 @@ function Input({
         placeholder={placeholder}
         name={name}
         value={value}
+        onKeyDown={onKeyDownEvent}
       />
     </_.Container>
   );
