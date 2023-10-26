@@ -19,15 +19,16 @@ export const TitleContainer = styled.div`
     align-items: flex-end;
     > svg {
       cursor: pointer;
+      width: 4px;
     }
-  }
+  } 
 `;
 
 export const FeedImg = styled.img`
   width: 100%;
   height: 400px;
 
-  object-fit: cover;
+  object-fit:contain;
 `;
 
 export const FeedContent = styled.pre`

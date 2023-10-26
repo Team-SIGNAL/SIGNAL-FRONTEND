@@ -7,11 +7,6 @@ export const Container = styled.div`
 export const ChildrenContainer = styled.div`
   margin-left: 260px;
   padding: 50px 100px;
-  height: 100vh;
-=======
-  padding: 50px 80px;
->>>>>>> Stashed changes
-
   display: flex;
   flex-direction: column;
   gap: 10px;

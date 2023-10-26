@@ -5,13 +5,11 @@ export const Container = styled.div`
   border-radius: 10px;
   border: 1px solid ${Color.gray[300]};
   padding: 10px;
-  height: min-content;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  position: sticky;
-  top: 50px;
-  margin-top: 65px;
+  background-color: ${Color.gray[100]};
+
 `;
 export const TitleContainer = styled.div`
   display: flex;
@@ -41,6 +39,4 @@ export const CommentContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
-  max-height: 500px;
-  overflow: auto;
 `;
