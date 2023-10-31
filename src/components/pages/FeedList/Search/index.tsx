@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 function Search() {
   const nav = useNavigate();
-  const { pathname } = useLocation();
+  const { pathname,search } = useLocation();
 
   return (
     <_.Container>
@@ -14,6 +14,7 @@ function Search() {
         }}
         option={["일반", "공지"]}
         value={["GENERAL", "NOTIFICATION"]}
+        selected={search.split("=")[1] ?? "GENERAL"}
       />
     </_.Container>
   );

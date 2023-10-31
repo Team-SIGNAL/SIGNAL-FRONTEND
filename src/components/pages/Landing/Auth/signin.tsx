@@ -15,7 +15,7 @@ import { useMutation } from "@tanstack/react-query";
 import { PostSignIn } from "utils/apis/users";
 import { setCookie } from "utils/cookie";
 //type
-import { SignInDataType } from "type/auth.type";
+import { SignInDataType } from "types/auth.type";
 
 function SignIn() {
   /** 로그인 modal open 상태 확인  */

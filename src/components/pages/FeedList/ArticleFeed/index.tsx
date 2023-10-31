@@ -1,12 +1,12 @@
 import { summaryDefaultImg } from "assets/index";
 import * as _ from "./style";
 import { Body2, BodyLarge2 } from "styles/text";
-import { EachFeedProps } from "./type";
 import { useLocation, useNavigate } from "react-router-dom";
+import { FeedListDataType } from "types/feed.type";
 
-function EachFeed({ img, title, date, id, user }: EachFeedProps) {
+function ArticleFeed({ img, title, date, id, user }: FeedListDataType) {
   const nav = useNavigate();
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
 
   return (
     <_.Container onClick={() => nav(`${pathname}/${id}`)}>
@@ -20,4 +20,4 @@ function EachFeed({ img, title, date, id, user }: EachFeedProps) {
   );
 }
 
-export default EachFeed;
+export default ArticleFeed;
