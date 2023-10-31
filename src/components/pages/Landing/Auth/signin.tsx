@@ -8,7 +8,7 @@ import { signInModalAtom } from "atoms/header";
 import Modal from "components/common/Modal";
 import Input from "components/common/Input";
 import { Button } from "styles/button";
-import { Body } from "styles/text";
+// import { Body } from "styles/text";
 import { alertError, alertSuccess, alertWarning } from "utils/toastify";
 //react-query
 import { useMutation } from "@tanstack/react-query";
@@ -16,14 +16,15 @@ import { PostSignIn } from "utils/apis/users";
 import { setCookie } from "utils/cookie";
 //type
 import { SignInDataType } from "types/auth.type";
+import { useNavigate } from "react-router-dom";
 
 function SignIn() {
+  const nav = useNavigate();
   /** 로그인 modal open 상태 확인  */
   const [signInModal, setSignInModal] = useRecoilState(signInModalAtom);
   const [signInValue, setSignInValue] = useState<SignInDataType>({
     account_id: "",
     password: "",
-    role: "admin",
   });
 
   /** 로그인 input onChagne 함수 */
@@ -38,7 +39,8 @@ function SignIn() {
       alertSuccess("로그인에 성공하였습니다.");
       setCookie("access_token", data.access_token, data.expire_at);
       setCookie("refresh_token", data.refresh_token, data.expire_at); // refresh 토큰 만료시간 변경 필요
-      // TODO :: 역할에 맞게 페이지 이동 시켜줘야함
+      if (data.role === "ADMIN") nav("/admin");
+      else if (data.role === "HOSPITAL") nav("/hospital");
     },
     onError: () => {
       alertError("아이디와 비밀번호를 확인해주세요.");
@@ -76,13 +78,13 @@ function SignIn() {
           </_.InputContainer>
           <_.ButtonContainer>
             <Button onClick={onClickSignIn}>로그인</Button>
-            <div>
+            {/* <div>
               <div>
                 <Body onClick={() => {}}>아이디 찾기</Body>
                 <hr />
                 <Body onClick={() => {}}>비밀번호 찾기</Body>
               </div>
-            </div>
+            </div> */}
           </_.ButtonContainer>
         </Modal>
       )}

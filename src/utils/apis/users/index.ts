@@ -1,18 +1,17 @@
 import axios from "axios";
 import { AUTH_URL } from "constants/config";
 import { getCookie } from "utils/cookie";
-import { SignInDataType, SignUpDataType } from "types/auth.type";
+import { ResSignInType, SignInDataType, SignUpDataType } from "types/auth.type";
 import { AuthInstance, DefaultInstance } from "..";
 
-const router = "/users";
+const router = "/admin";
 
 /** 로그인 api */
 export const PostSignIn = async ({
   account_id,
   password,
-  role,
-}: SignInDataType) => {
-  const { data } = await DefaultInstance.post(`${router}/${role}/signin`, {
+}: SignInDataType): Promise<ResSignInType> => {
+  const { data } = await DefaultInstance.post(`${router}/signin`, {
     account_id,
     password,
   });
@@ -26,13 +25,13 @@ export const PostSignUp = async ({
   account_id,
   password,
 }: SignUpDataType) => {
-  const { data } = await DefaultInstance.post(`${router}/hospital/signup`, {
+  const res = await DefaultInstance.post(`${router}/signup`, {
     name,
     phone,
     account_id,
     password,
   });
-  return data;
+  return res;
 };
 
 /** 회원탈퇴 */
