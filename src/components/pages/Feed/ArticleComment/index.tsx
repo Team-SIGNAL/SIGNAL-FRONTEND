@@ -1,9 +1,8 @@
 import { Body, BodyLarge2 } from "styles/text";
 import * as _ from "./style";
-import { EachCommentProps } from "./type";
-import More from "assets/icon/more";
+import { ArticleCommentProps } from "./type";
 
-function EachComment({ writer, content, isMine }: EachCommentProps) {
+function ArticleComment({ writer, content, isMine }: ArticleCommentProps) {
   return (
     <_.Container>
       <_.UserContainer>
@@ -25,4 +24,4 @@ function EachComment({ writer, content, isMine }: EachCommentProps) {
   );
 }
 
-export default EachComment;
+export default ArticleComment;
