@@ -21,3 +21,10 @@ export const GetFeed = async ({ id }: GetFeedDataType) => {
   );
   return data;
 };
+
+export const getFeedComment = async ({ id }: GetFeedDataType) => {
+  const { data }: GetFeedDataResType = await AuthInstance.get(
+    `${router}/${id}`
+  );
+  return data;
+};
