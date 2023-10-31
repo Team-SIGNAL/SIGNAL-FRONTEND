@@ -1,7 +1,7 @@
 import axios from "axios";
 import { AUTH_URL } from "constants/config";
 import { getCookie } from "utils/cookie";
-import { SignInDataType, SignUpDataType } from "type/auth.type";
+import { SignInDataType, SignUpDataType } from "types/auth.type";
 import { AuthInstance, DefaultInstance } from "..";
 
 const router = "/users";

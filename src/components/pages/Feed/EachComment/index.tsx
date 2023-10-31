@@ -1,7 +1,6 @@
 import { Body, BodyLarge2 } from "styles/text";
 import * as _ from "./style";
 import { EachCommentProps } from "./type";
-import Report from "assets/icon/report";
 import More from "assets/icon/more";
 
 function EachComment({ writer, content, isMine }: EachCommentProps) {
@@ -12,10 +11,10 @@ function EachComment({ writer, content, isMine }: EachCommentProps) {
 
         <_.ReportContainer>
           {isMine ? (
-            <More />
+            <_.MoreSVG />
           ) : (
             <>
-              <Report />
+              <_.ReportSVG />
               <Body>신고</Body>
             </>
           )}

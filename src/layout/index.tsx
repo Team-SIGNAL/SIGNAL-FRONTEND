@@ -1,6 +1,6 @@
 import Sidebar from "components/common/Sidebar";
 import * as _ from "./style";
-import { TitleLarge } from "styles/text";
+import { TitleLarge2 } from "styles/text";
 import { Outlet } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { nowPathAtom } from "atoms/path";
@@ -20,7 +20,7 @@ function Layout() {
     <_.Container>
       <Sidebar />
       <_.ChildrenContainer>
-        <TitleLarge>{pageName}</TitleLarge>
+        <TitleLarge2>{pageName}</TitleLarge2>
         <Outlet />
       </_.ChildrenContainer>
     </_.Container>
