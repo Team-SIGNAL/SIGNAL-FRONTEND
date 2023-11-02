@@ -28,7 +28,7 @@ function Sidebar() {
                 $isselect={path[2] === undefined}
                 onClick={() => nav("/hospital")}
               >
-                <BodyStrong>메뉴</BodyStrong>
+                <BodyStrong>병원 예약</BodyStrong>
               </_.Menus>
               <_.Menus
                 $isselect={path[2] === "feed"}

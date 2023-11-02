@@ -14,7 +14,7 @@ import { useMutation } from "@tanstack/react-query";
 import { PostSignUp } from "utils/apis/users";
 import { SignUpDataType } from "types/auth.type";
 
-const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*]).{8,12}$/;
+const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*]).{8,32}$/;
 const numberRegex = /^\d{3}-\d{3,4}-\d{4}$/;
 
 /** 회원가입 모답 */
@@ -49,6 +49,7 @@ function SignUp() {
     },
     onError: (err) => {
       alertError("회원가입에 실패하였습니다.");
+      console.log(err)
     },
   });
 
@@ -66,15 +67,15 @@ function SignUp() {
       signupValue.account_id.length > 12
     ) {
       alertWarning("아이디는 5~12글자 사이입니다.");
-    } else if (numberRegex.test(signupValue.phone)) {
-      alertWarning("전화번호 형식은 010-0000-0000입니다.");
+    } else if (!numberRegex.test(signupValue.phone)) {
+      alertWarning("전화번호 형식은 000-0000-0000입니다.");
     } else if (
       signupValue.password.length < 8 ||
-      signupValue.password.length > 12 ||
+      signupValue.password.length > 32 ||
       !passwordRegex.test(signupValue.password)
     ) {
       alertWarning(
-        "비밀번호는 8자 이상 12이하 문자열, 하나이상 숫자, 문자, 특수문자를 포함해야합니다."
+        "비밀번호는 8자 이상 32이하 소문자, 숫자, 특수 문자 모두 포함해야 합니다"
       );
     } else if (signupValue.password !== passwordCheck) {
       alertWarning("비밀번호 확인이 맞지 않습니다.");
