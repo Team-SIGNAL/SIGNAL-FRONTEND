@@ -5,6 +5,7 @@ import Landing from "./pages/Landing";
 import MyPage from "pages/MyPage";
 import Feed from "pages/Feed";
 import FeedList from "pages/FeedList";
+import Appointment from "pages/Appointment";
 
 // admin
 
@@ -15,6 +16,7 @@ function App() {
       <Route element={<Layout />}>
         <Route path="/hospital">
           {/* 병원 관계자 url  */}
+          <Route path="" element={<Appointment />} />
           <Route path="my" element={<MyPage />} />
           <Route path="rec" element={<MyPage />} />
           <Route path="feed" element={<FeedList />} />
