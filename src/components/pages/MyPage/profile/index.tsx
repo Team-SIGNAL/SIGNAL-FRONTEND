@@ -5,12 +5,15 @@ import { Button } from "styles/button";
 import { delCookie } from "utils/cookie";
 import Color from "styles/color";
 import { alertSuccess } from "utils/toastify";
+import { useNavigate } from "react-router-dom";
 
 function Profile() {
+  const nav = useNavigate();
   const logoutOnClick = () => {
     delCookie("access_token");
     delCookie("refresh_token");
     alertSuccess("로그아웃되었습니다.");
+    nav("/");
   };
   return (
     <_.Container>
@@ -22,6 +25,7 @@ function Profile() {
         </_.InfoContainer>
       </_.ProfileContainer>
       <Button
+        width="fit-content"
         onClick={logoutOnClick}
         backColor={Color.gray[300]}
         color={Color.gray[500]}

@@ -12,12 +12,14 @@ export const Label = styled.label`
   cursor: pointer;
 `;
 
-export const Input = styled.textarea`
+export const Input = styled.textarea<{ height?: string }>`
   resize: vertical;
   padding: 12px;
   border: 1px solid ${Color.gray[400]};
   border-radius: 8px;
   background-color: ${Color.gray[200]};
+
+  height: ${({ height }) => height && height};
 
   font-size: 14px;
   font-weight: 400;
@@ -27,4 +29,3 @@ export const Input = styled.textarea`
   outline: none;
   cursor: pointer;
 `;
-

@@ -8,6 +8,7 @@ function TextArea({
   name,
   value,
   onChange,
+  height
 }: TextAreaProps) {
   return (
     <_.Container>
@@ -16,6 +17,7 @@ function TextArea({
           <BodyLarge>{label}</BodyLarge>
         </_.Label>
         <_.Input
+        height={height}
           onChange={onChange}
           placeholder={placeholder}
           name={name}
