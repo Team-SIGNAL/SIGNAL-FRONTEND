@@ -11,7 +11,7 @@ export const Button = styled.button<{
   background-color: ${({ backColor }) =>
     backColor ? backColor : Color.primary[300]};
   padding: 12px;
-  width: ${({ width }) => (width ? width : "100%")}%;
+  width: ${({ width }) => (width ? width : "100%")};
   border: none;
   justify-content: center;
   align-items: center;

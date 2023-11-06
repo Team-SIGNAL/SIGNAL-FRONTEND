@@ -10,7 +10,7 @@ function Layout() {
   const path = useRecoilValue(nowPathAtom);
   const [pageName, setPageName ] = useState<string>("");
   useEffect(()=>{
-    if(path[1] === "hospital" && path[2] === undefined) setPageName("병원 예약")
+    if(path[1] === "hospital" && path[2] === undefined) setPageName("")
     else if(path[1] === "admin" && path[2] === undefined) setPageName("병원 승인")
     else if(path[2] === "feed") setPageName("커뮤니티")
     else if(path[2] === "rec") setPageName("추천")
