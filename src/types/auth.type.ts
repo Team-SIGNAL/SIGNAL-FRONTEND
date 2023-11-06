@@ -16,6 +16,7 @@ export type SignUpDataType = {
 export type ResSignInType = {
   access_token: string;
   refresh_token: string;
-  expire_at: string;
-  role: "ADMIN" | "HOSPITAL";
+  access_exp: string;
+  refresh_exp: string;
+  role: "ADMIN" | "HOSPITAL" | "NON_HOSPITAL";
 };

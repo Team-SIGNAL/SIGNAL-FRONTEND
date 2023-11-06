@@ -6,6 +6,7 @@ import MyPage from "pages/MyPage";
 import Feed from "pages/Feed";
 import FeedList from "pages/FeedList";
 import Appointment from "pages/Appointment";
+import AppointmentDetail from "pages/AppointmentDetail";
 
 // admin
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="/hospital">
           {/* 병원 관계자 url  */}
           <Route path="" element={<Appointment />} />
+          <Route path=":date" element={<AppointmentDetail />} />
           <Route path="my" element={<MyPage />} />
           <Route path="rec" element={<MyPage />} />
           <Route path="feed" element={<FeedList />} />
