@@ -26,6 +26,14 @@ export type GetFeedCommentResType = {
   };
 };
 
+/** 커뮤니티 피드 작성&수정 */
+export type PostFeed = {
+  title: string;
+  content: string;
+  image: string;
+  id?: string;
+};
+
 /** 커뮤니티 피드 */
 export type FeedDataType = {
   img: string | null;
