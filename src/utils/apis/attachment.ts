@@ -1,12 +1,15 @@
-import { patchHospitalFileProps } from "types/attachment.type";
+import {
+  patchImageFileResType,
+} from "types/attachment.type";
 import { AuthInstance } from ".";
 
 const router = "/attachment";
 
-/** 병원 관계자 승인 axios prop */
-export const patchHospitalFile = async ({
-  formData,
-}: patchHospitalFileProps) => {
-  const { data } = await AuthInstance.patch(`${router}/`, formData);
+/** 이미지 업로드 axios prop */
+export const patchImage = async (formData: FormData) => {
+  const { data }: patchImageFileResType = await AuthInstance.patch(
+    `${router}/`,
+    formData
+  );
   return data;
 };

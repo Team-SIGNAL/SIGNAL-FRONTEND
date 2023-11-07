@@ -5,3 +5,5 @@ export const Container = styled.div`
   flex-direction: column;
   gap: 10px;
 `;
+
+export const FileInput = styled.input``;

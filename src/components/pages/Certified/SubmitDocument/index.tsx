@@ -1,11 +1,12 @@
 import * as _ from "./style";
 import { BodyLarge2, BodyLarge, SubTitle, BodyStrong } from "styles/text";
 import Plus from "assets/icon/plus";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 import { Button } from "styles/button";
 import { useMutation } from "@tanstack/react-query";
-import { patchHospitalFile } from "utils/apis/attachment";
+import { patchImage } from "utils/apis/attachment";
 import { alertError } from "utils/toastify";
+import { PatchHostpitalImg } from "utils/apis/admin";
 
 function SubmitDocument() {
   const imageInputRef = useRef<HTMLInputElement>(null);
@@ -18,21 +19,31 @@ function SubmitDocument() {
     }
   };
 
-  const { mutate: fileSubmitMutate } = useMutation(patchHospitalFile, {
-    onSuccess: () => {
-      setLoadingState(true);
+  const { mutate: imageMutate } = useMutation(patchImage, {
+    onSuccess: (data) => {
+      const { image } = data;
+      imageSubmitMutate(image);
     },
-    onError: (err) => {
+    onError: () => {
       alertError("오류가 발생했습니다. 관리자에게 문의해주세요");
     },
   });
+  const { mutate: imageSubmitMutate } = useMutation(PatchHostpitalImg, {
+    onSuccess: () => {
+      setLoadingState(true);
+    },
+    onError: () => {
+      alertError("오류가 발생했습니다. 관리자에게 문의해주세요");
+    },
+  });
+
   const SubmitFile = () => {
     if (!file) {
       alertError("사업자등록증 또는 의료긱관개설신고(허가)증을 등록해주세요");
     } else {
       const formData = new FormData();
       formData.append("image", file);
-      fileSubmitMutate({ formData });
+      imageMutate(formData);
     }
   };
 
