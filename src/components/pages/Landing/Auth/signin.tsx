@@ -37,14 +37,18 @@ function SignIn() {
   const { mutate: signinMutate } = useMutation(PostSignIn, {
     onSuccess: (data) => {
       alertSuccess("로그인에 성공하였습니다.");
-      setCookie("access_token", data.access_token, data.access_exp);
-      setCookie("refresh_token", data.refresh_token, data.refresh_exp); // refresh 토큰 만료시간 변경 필요
+      setCookie("access_token", data.access_token, new Date(data.access_exp));
+      setCookie(
+        "refresh_token",
+        data.refresh_token,
+        new Date(data.refresh_exp)
+      );
+      localStorage.setItem("ROLE", data.role);
       if (data.role === "ADMIN") nav("/admin");
       else if (data.role === "HOSPITAL") nav("/hospital");
-      else nav("/hospital");
+      else nav("/certified");
     },
-    onError: (er) => {
-      console.log(er)
+    onError: () => {
       alertError("아이디와 비밀번호를 확인해주세요.");
     },
   });

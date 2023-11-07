@@ -3,7 +3,7 @@ import * as _ from "./style";
 import More from "assets/icon/more";
 import Report from "assets/icon/report";
 import { useQuery } from "@tanstack/react-query";
-import { GetFeed } from "utils/apis/feeds";
+import { GetFeed } from "utils/apis/feed";
 import { useLocation } from "react-router-dom";
 import { FeedDataType } from "types/feed.type";
 import Loading from "components/common/Loading";
