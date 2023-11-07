@@ -4,7 +4,7 @@ import {
   GetFeedListDataResType,
   GetFeedListDataType,
 } from "types/feed.type";
-import { AuthInstance } from "..";
+import { AuthInstance } from ".";
 
 const router = "/feed";
 

@@ -5,7 +5,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import Loading from "components/common/Loading";
 import Error from "components/common/Error";
 import { useEffect, useState } from "react";
-import { GetFeedList } from "utils/apis/feeds";
+import { GetFeedList } from "utils/apis/feed";
 import { useInView } from "react-intersection-observer";
 
 function List() {

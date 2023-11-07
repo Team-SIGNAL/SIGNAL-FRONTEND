@@ -7,7 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import { FeedCommentDataType } from "types/feed.type";
 import Loading from "components/common/Loading";
 import Error from "components/common/Error";
-import { getFeedComment } from "utils/apis/feeds";
+import { getFeedComment } from "utils/apis/feed";
 import { useLocation } from "react-router-dom";
 
 function Comment() {

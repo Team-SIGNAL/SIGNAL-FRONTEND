@@ -2,7 +2,7 @@ import axios from "axios";
 import { AUTH_URL } from "constants/config";
 import { getCookie } from "utils/cookie";
 import { ResSignInType, SignInDataType, SignUpDataType } from "types/auth.type";
-import { AuthInstance, DefaultInstance } from "..";
+import { AuthInstance, DefaultInstance } from ".";
 
 const router = "/admin";
 
