@@ -22,12 +22,14 @@ function SubmitDocument() {
   const { mutate: imageMutate } = useMutation(patchImage, {
     onSuccess: (data) => {
       const { image } = data;
-      imageSubmitMutate(image);
+      //imageSubmitMutate(image);
+      console.log(data);
     },
     onError: () => {
       alertError("오류가 발생했습니다. 관리자에게 문의해주세요");
     },
   });
+
   const { mutate: imageSubmitMutate } = useMutation(PatchHostpitalImg, {
     onSuccess: () => {
       setLoadingState(true);
@@ -43,6 +45,7 @@ function SubmitDocument() {
     } else {
       const formData = new FormData();
       formData.append("image", file);
+      console.log(file);
       imageMutate(formData);
     }
   };

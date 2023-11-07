@@ -1,6 +1,4 @@
-import {
-  patchImageFileResType,
-} from "types/attachment.type";
+import { patchImageFileResType } from "types/attachment.type";
 import { AuthInstance } from ".";
 
 const router = "/attachment";

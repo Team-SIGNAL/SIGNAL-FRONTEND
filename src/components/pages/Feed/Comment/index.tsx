@@ -28,7 +28,9 @@ function Comment() {
     queryKey: ["getFeedComment", { id }],
     queryFn: () => getFeedComment({ id }),
     retryOnMount: false,
-    retry: 1,
+    retry: 0,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
   });
 
   if (isLoading) {
@@ -38,20 +40,20 @@ function Comment() {
   } else {
     return (
       <_.Container>
+        <_.TitleContainer>
+          <SubTitle>댓글</SubTitle>
+          <BodyStrong>{feedComment ? feedComment.length : 0}개</BodyStrong>
+        </_.TitleContainer>
+        <_.InputContainer>
+          <Input
+            value={feedInput}
+            placeholder="댓글"
+            onChange={(e) => setFeedInput(e.target.value)}
+          />
+          <_.CommentButton>등록</_.CommentButton>
+        </_.InputContainer>
         {feedComment && (
           <>
-            <_.TitleContainer>
-              <SubTitle>댓글</SubTitle>
-              <BodyStrong>{feedComment.length}개</BodyStrong>
-            </_.TitleContainer>
-            <_.InputContainer>
-              <Input
-                value={feedInput}
-                placeholder="댓글"
-                onChange={(e) => setFeedInput(e.target.value)}
-              />
-              <_.CommentButton>등록</_.CommentButton>
-            </_.InputContainer>
             <_.CommentContainer>
               {feedComment.map((v) => (
                 <ArticleComment {...v} />

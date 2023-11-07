@@ -34,6 +34,8 @@ function List() {
     retryOnMount: false,
     retry: 0,
     enabled: false,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
   });
 
   const [inViewRef, inView] = useInView();

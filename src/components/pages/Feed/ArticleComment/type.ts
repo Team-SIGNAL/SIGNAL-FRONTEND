@@ -1,5 +1,5 @@
 export interface ArticleCommentProps {
   writer: string;
   content: string;
-  isMine?: boolean;
+  is_mine?: boolean;
 }

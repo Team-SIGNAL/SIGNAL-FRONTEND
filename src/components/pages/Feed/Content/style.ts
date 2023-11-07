@@ -17,6 +17,14 @@ export const TitleContainer = styled.div`
 
     justify-content: center;
     align-items: flex-end;
+    >div{
+      display: flex;
+      gap: 5px;
+      >p{
+        cursor: pointer;
+        color:${Color.gray[500]}
+      }
+    }
     > svg {
       cursor: pointer;
       width: 4px;
