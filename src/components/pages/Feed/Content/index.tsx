@@ -8,6 +8,7 @@ import { useLocation } from "react-router-dom";
 import { FeedDataType } from "types/feed.type";
 import Loading from "components/common/Loading";
 import Error from "components/common/Error";
+import ReportModal from "components/common/Report";
 
 function Content() {
   const { pathname } = useLocation();
@@ -15,8 +16,8 @@ function Content() {
 
   const {
     isLoading,
-    isError,
     data: feed,
+    isError,
   }: {
     isLoading: boolean;
     isError: boolean;
@@ -25,8 +26,13 @@ function Content() {
     queryKey: ["getFeed", { id }],
     queryFn: () => GetFeed({ id }),
     retryOnMount: false,
-    retry: 1,
+    retry: 0,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
   });
+
+  const onUpdate = () => {};
+  const onDelete = () => {};
 
   if (isLoading) {
     return <Loading />;
@@ -41,19 +47,17 @@ function Content() {
               <TitleLarge>{feed.title}</TitleLarge>
               {feed.isMine && (
                 <div>
-                  <More />
+                  <div>
+                    <Body onClick={onUpdate}>수정</Body>
+                    <Body onClick={onDelete}>삭제</Body>
+                  </div>
                   <Body2>{feed.date}</Body2>
                 </div>
               )}
             </_.TitleContainer>
             {feed.img && <_.FeedImg src={feed.img} alt="feed Img" />}
             <_.FeedContent>{feed.content}</_.FeedContent>
-            {!feed.isMine && (
-              <_.ReportContainer>
-                <Report />
-                <Body>신고</Body>
-              </_.ReportContainer>
-            )}
+            {!feed.isMine && <ReportModal />}
           </>
         )}
       </_.Container>
