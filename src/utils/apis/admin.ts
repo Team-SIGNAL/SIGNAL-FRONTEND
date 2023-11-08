@@ -1,3 +1,4 @@
+import { getApprovalList } from "types/approval.type";
 import { AuthInstance } from "utils/apis";
 
 const router = "/admin";
@@ -7,5 +8,11 @@ export const PatchHostpitalImg = async (hospital_image: string) => {
   const { data } = await AuthInstance.patch(`${router}/image`, {
     hospital_image,
   });
+  return data;
+};
+
+/** 병원 승인 요청 리스트 */
+export const GetApprovalList = async () => {
+  const { data }: getApprovalList = await AuthInstance.get(`${router}/list`);
   return data;
 };

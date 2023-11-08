@@ -68,7 +68,7 @@ function Sidebar() {
           <BodyStrong>Menu</BodyStrong>
           <div>
             <_.Menus
-              $isselect={path[2] === undefined}
+              $isselect={path[2] !== "feed"}
               onClick={() => nav("/admin")}
             >
               <BodyStrong>계정 승인</BodyStrong>

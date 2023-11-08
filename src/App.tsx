@@ -1,17 +1,21 @@
 import { Routes, Route } from "react-router-dom";
 import Layout from "layout";
+//common
+import Landing from "./pages/common/Landing";
+import MyPage from "pages/common/MyPage";
+import Feed from "pages/common/Feed";
+import FeedList from "pages/common/FeedList";
+import FeedWrite from "pages/common/FeedWrite";
+
 // hospital
-import Landing from "./pages/Landing";
-import MyPage from "pages/MyPage";
-import Feed from "pages/Feed";
-import FeedList from "pages/FeedList";
-import Appointment from "pages/Appointment";
-import AppointmentDetail from "pages/AppointmentDetail";
-import FeedWrite from "pages/FeedWrite";
+import Appointment from "pages/hospital/Appointment";
+import AppointmentDetail from "pages/hospital/AppointmentDetail";
 import ProctedRoute from "Routes/ProctedRoute";
-import Certified from "pages/Certified";
+import Certified from "pages/hospital/Certified";
 
 // admin
+import ApprovalList from "pages/admin/ApprovalList";
+import ApprovalDetail from "pages/admin/ApprovalDetail";
 
 function App() {
   return (
@@ -33,8 +37,10 @@ function App() {
         </Route>
         <Route path="/admin">
           {/* 관리자 url  */}
-          <Route path="" element={<></>} />
+          <Route path="" element={<ApprovalList />} />
+          <Route path=":id" element={<ApprovalDetail />} />
           <Route path="feed" element={<FeedList />} />
+          <Route path="feed/:id" element={<Feed />} />
           <Route path="feed/write" element={<FeedWrite />} />
         </Route>
       </Route>
