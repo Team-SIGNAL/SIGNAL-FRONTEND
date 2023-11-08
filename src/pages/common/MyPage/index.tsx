@@ -1,6 +1,6 @@
 import * as S from "./style";
-import Profile from "components/pages/MyPage/profile";
-import Secess from "components/pages/MyPage/secess";
+import Profile from "components/pages/common/MyPage/profile";
+import Secess from "components/pages/common/MyPage/secess";
 
 function MyPage() {
 

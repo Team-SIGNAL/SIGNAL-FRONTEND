@@ -1,6 +1,6 @@
 import * as _ from "./style";
-import Search from "components/pages/FeedList/Search";
-import List from "components/pages/FeedList/List";
+import Search from "components/pages/common/FeedList/Search";
+import List from "components/pages/common/FeedList/List";
 
 function FeedList() {
   return (

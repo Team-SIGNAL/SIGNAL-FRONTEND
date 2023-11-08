@@ -1,4 +1,4 @@
-import Calendar from "components/pages/Appointment/Calendar";
+import Calendar from "components/pages/hospital/Calendar";
 import * as _ from "./style";
 
 function Appointment() {

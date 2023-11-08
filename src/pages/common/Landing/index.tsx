@@ -2,9 +2,9 @@ import * as _ from "./style";
 import { IntroduceData } from "./introduce";
 import { BodyLarge, Title, TitleLarge } from "styles/text";
 import { landingMock } from "assets/index";
-import Layout from "components/pages/Landing/Layout";
-import SignUp from "components/pages/Landing/Auth/signup";
-import SignIn from "components/pages/Landing/Auth/signin";
+import Layout from "components/pages/common/Landing/Layout";
+import SignUp from "components/pages/common/Landing/Auth/signup";
+import SignIn from "components/pages/common/Landing/Auth/signin";
 
 function Landing() {
   return (

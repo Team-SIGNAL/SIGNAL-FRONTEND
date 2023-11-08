@@ -1,6 +1,6 @@
 import * as _ from "./style";
-import Submit from "components/pages/FeedWrite/Submit";
-import Content from "components/pages/FeedWrite/Content";
+import Submit from "components/pages/common/FeedWrite/Submit";
+import Content from "components/pages/common/FeedWrite/Content";
 import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 import { useLocation } from "react-router-dom";
