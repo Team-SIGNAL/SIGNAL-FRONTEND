@@ -4,7 +4,7 @@ import Plus from "assets/icon/plus";
 import { ChangeEvent, useRef, useState } from "react";
 import { Button } from "styles/button";
 import { useMutation } from "@tanstack/react-query";
-import { patchImage } from "utils/apis/attachment";
+import { postImage } from "utils/apis/attachment";
 import { alertError } from "utils/toastify";
 import { PatchHostpitalImg } from "utils/apis/admin";
 
@@ -19,10 +19,10 @@ function SubmitDocument() {
     }
   };
 
-  const { mutate: imageMutate } = useMutation(patchImage, {
+  const { mutate: imageMutate } = useMutation(postImage, {
     onSuccess: (data) => {
       const { image } = data;
-      //imageSubmitMutate(image);
+      // imageSubmitMutate(image);
       console.log(data);
     },
     onError: () => {

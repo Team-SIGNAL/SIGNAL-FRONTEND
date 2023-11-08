@@ -8,7 +8,7 @@ import {
   FeedTitleAtom,
 } from "atoms/feed";
 import { useMutation } from "@tanstack/react-query";
-import { patchImage } from "utils/apis/attachment";
+import { postImage } from "utils/apis/attachment";
 import { alertError, alertSuccess } from "utils/toastify";
 import { patchUpdateFeed, postFeed } from "utils/apis/feed";
 
@@ -18,7 +18,7 @@ function Submit() {
   const content = useRecoilValue(FeedContentAtom);
   const file = useRecoilValue(FeedImageAtom);
 
-  const { mutate: imageMutate } = useMutation(patchImage, {
+  const { mutate: imageMutate } = useMutation(postImage, {
     onSuccess: (data) => {
       onSubmitFeed(data.image);
     },
