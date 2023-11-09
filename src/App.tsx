@@ -16,6 +16,7 @@ import Certified from "pages/hospital/Certified";
 // admin
 import ApprovalList from "pages/admin/ApprovalList";
 import ApprovalDetail from "pages/admin/ApprovalDetail";
+import Recommend from "pages/hospital/Recommend";
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
             <Route path="feed" element={<FeedList />} />
             <Route path="feed/:id" element={<Feed />} />
             <Route path="feed/write" element={<FeedWrite />} />
-            <Route path="rec" element={<>추천</>} />
+            <Route path="rec" element={<Recommend/>} />
           </Route>
         </Route>
         <Route path="/admin">

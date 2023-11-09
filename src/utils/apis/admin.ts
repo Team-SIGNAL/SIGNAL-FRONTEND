@@ -5,6 +5,7 @@ const router = "/admin";
 
 /** 병원 관계자 인증을 위한 이미지 등록 */
 export const PatchHostpitalImg = async (hospital_image: string) => {
+  console.log("asdasd",hospital_image)
   const { data } = await AuthInstance.patch(`${router}/image`, {
     hospital_image,
   });
