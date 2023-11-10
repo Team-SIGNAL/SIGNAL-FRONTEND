@@ -1,15 +1,13 @@
 import Category from "components/pages/hospital/Recommend/Category";
 import * as _ from "./style";
-import { useLocation } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import CategoryList from "components/pages/hospital/Recommend/CategoryList";
 
 function Recommend() {
-  const { search } = useLocation();
-  const cat = search.slice(5);
+  const [seachParams] = useSearchParams();
+  const cat = seachParams.get("cat");
   return (
-    <_.Container>
-      {search.slice(5) ? <CategoryList cat={cat} /> : <Category />}
-    </_.Container>
+    <_.Container>{cat ? <CategoryList cat={cat} /> : <Category />}</_.Container>
   );
 }
 
