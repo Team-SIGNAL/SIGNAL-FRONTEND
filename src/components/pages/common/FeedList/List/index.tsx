@@ -21,11 +21,12 @@ function List() {
     queryKey: ["getFeedList", { tag, pagenum }],
     queryFn: () => GetFeedList({ tag, pagenum }),
     select: (data) => ({
-      pages: data.pages.map((v) => v.feed),
       pageParams: data.pageParams,
+      pages: data.pages.flatMap((page) => page.feed),
     }),
-    getNextPageParam: (lastPage, allPage) => {
-      if (allPage.length < lastPage.total) return pagenum + 1;
+    getNextPageParam: (lastPage) => {
+      if (data && data.pageParams.length < lastPage.page_total)
+        return pagenum + 1;
       return undefined;
     },
     onSuccess: () => {
@@ -52,8 +53,7 @@ function List() {
     return (
       <>
         <_.Container>
-          {data &&
-            data.pages.flatMap((v) => v).map((d) => <ArticleFeed {...d} />)}
+          {data && data.pages.map((d) => <ArticleFeed {...d} />)}
           <div ref={inViewRef}>{isFetching && <Loading />}</div>
         </_.Container>
       </>

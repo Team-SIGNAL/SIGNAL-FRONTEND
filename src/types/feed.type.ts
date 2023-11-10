@@ -16,7 +16,7 @@ export type GetFeedDataResType = {
 
 /** axios res 커뮤니티 목록 */
 export type GetFeedListDataResType = {
-  data: { feed: FeedListDataType[]; total: number };
+  data: { feed: FeedListDataType[]; page_total: number };
 };
 
 /** axios res 커뮤니티 댓글 */

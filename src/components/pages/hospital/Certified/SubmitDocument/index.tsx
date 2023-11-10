@@ -22,8 +22,7 @@ function SubmitDocument() {
   const { mutate: imageMutate } = useMutation(postImage, {
     onSuccess: (data) => {
       const { image } = data;
-      // imageSubmitMutate(image);
-      console.log(data);
+      imageSubmitMutate(image);
     },
     onError: () => {
       alertError("오류가 발생했습니다. 관리자에게 문의해주세요");
@@ -32,6 +31,7 @@ function SubmitDocument() {
 
   const { mutate: imageSubmitMutate } = useMutation(PatchHostpitalImg, {
     onSuccess: () => {
+      alertError("성공")
       setLoadingState(true);
     },
     onError: () => {

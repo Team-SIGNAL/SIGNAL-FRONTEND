@@ -21,8 +21,8 @@ function Search() {
         onChange={(e) => {
           nav(`${pathname}?tag=${e.target.value}`);
         }}
-        option={["일반", "공지"]}
-        value={["GENERAL", "NOTIFICATION"]}
+        option={["일반", "병원", "공지"]}
+        value={["GENERAL", "HOSPITAL", "NOTIFICATION"]}
         selected={search.split("=")[1] ?? "GENERAL"}
       />
     </_.Container>

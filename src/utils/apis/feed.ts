@@ -1,4 +1,5 @@
 import {
+  GetFeedCommentResType,
   GetFeedDataResType,
   GetFeedDataType,
   GetFeedListDataResType,
@@ -11,7 +12,7 @@ const router = "/feed";
 
 export const GetFeedList = async ({ tag, pagenum }: GetFeedListDataType) => {
   const { data }: GetFeedListDataResType = await AuthInstance.get(
-    `/${router}/list?tag=${tag}?pagenum=${pagenum}`
+    `/${router}/list?tag=${tag}&pagenum=${pagenum}&num=10`
   );
   return data;
 };
@@ -24,7 +25,7 @@ export const GetFeed = async ({ id }: GetFeedDataType) => {
 };
 
 export const getFeedComment = async ({ id }: GetFeedDataType) => {
-  const { data }: GetFeedDataResType = await AuthInstance.get(
+  const { data }: GetFeedCommentResType = await AuthInstance.get(
     `${router}/${id}`
   );
   return data;
