@@ -4,10 +4,10 @@ import { BodyStrong, SubTitle } from "styles/text";
 import Input from "components/common/Input";
 import ArticleComment from "../ArticleComment";
 import { useQuery } from "@tanstack/react-query";
-import { FeedCommentDataType } from "types/feed.type";
+import { FeedCommentDataType } from "types/poop/feed.type";
 import Loading from "components/common/Loading";
 import Error from "components/common/Error";
-import { getFeedComment } from "utils/apis/feed";
+import { getFeedComment } from "utils/apis/poop/feed";
 import { useLocation } from "react-router-dom";
 
 function Comment() {

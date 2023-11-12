@@ -4,9 +4,9 @@ import Plus from "assets/icon/plus";
 import { ChangeEvent, useRef, useState } from "react";
 import { Button } from "styles/button";
 import { useMutation } from "@tanstack/react-query";
-import { postImage } from "utils/apis/attachment";
+import { postImage } from "utils/apis/poop/attachment";
 import { alertError } from "utils/toastify";
-import { PatchHostpitalImg } from "utils/apis/admin";
+import { PatchImage } from "utils/apis/poop/admin";
 
 function SubmitDocument() {
   const imageInputRef = useRef<HTMLInputElement>(null);
@@ -29,7 +29,7 @@ function SubmitDocument() {
     },
   });
 
-  const { mutate: imageSubmitMutate } = useMutation(PatchHostpitalImg, {
+  const { mutate: imageSubmitMutate } = useMutation(PatchImage, {
     onSuccess: () => {
       alertError("성공")
       setLoadingState(true);

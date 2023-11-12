@@ -2,7 +2,7 @@ import { summaryDefaultImg } from "assets/index";
 import * as _ from "./style";
 import { Body2, BodyLarge2 } from "styles/text";
 import { useLocation, useNavigate } from "react-router-dom";
-import { FeedListDataType } from "types/feed.type";
+import { FeedListDataType } from "types/poop/feed.type";
 
 function ArticleFeed({ img, title, date, id, user }: FeedListDataType) {
   const nav = useNavigate();

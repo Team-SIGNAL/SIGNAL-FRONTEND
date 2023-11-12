@@ -10,7 +10,7 @@ import {
 } from "atoms/feed";
 import { ChangeEvent, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { GetFeed } from "utils/apis/feed";
+import { GetFeed } from "utils/apis/poop/feed";
 
 function Content() {
   const [title, setTitle] = useRecoilState(FeedTitleAtom);

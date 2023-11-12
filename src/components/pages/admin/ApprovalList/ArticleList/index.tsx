@@ -1,6 +1,6 @@
 import * as _ from "./style";
 import { Body2, BodyLarge2 } from "styles/text";
-import { approvalList } from "types/approval.type";
+import { approvalList } from "types/poop/approval.type";
 import { useNavigate } from "react-router-dom";
 
 function ArticleList({ id, name, phone }: approvalList) {
