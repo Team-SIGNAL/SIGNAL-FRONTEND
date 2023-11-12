@@ -1,4 +1,4 @@
-import { BodyLarge2, Title } from "styles/text";
+import { Body2, Title } from "styles/text";
 import * as _ from "./style";
 
 const data = {
@@ -18,14 +18,14 @@ function Content() {
         <_.Image src={data.image} />
         <div>
           <_.LinkButton to={data.link}>
-            <BodyLarge2>🔗 링크</BodyLarge2>
+            <Body2>🔗 링크</Body2>
           </_.LinkButton>
-          <BodyLarge2>예상 소요 시간 : {data.time}</BodyLarge2>
+          <Body2>예상 소요 시간 : {data.time}</Body2>
         </div>
       </_.EctContainer>
       <_.ContentContainer>
         <Title>{data.title}</Title>
-        {/* <_.Content>{data.content}</_.Content> */}
+        <_.Content>{data.content}</_.Content>
       </_.ContentContainer>
     </_.Container>
   );
