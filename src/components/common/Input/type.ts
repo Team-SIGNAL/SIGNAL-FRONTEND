@@ -1,5 +1,5 @@
 export interface InputProps {
-  label: string;
+  label?: string;
   type?: string;
   placeholder: string;
   name?: string;
@@ -8,4 +8,5 @@ export interface InputProps {
 
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  enterSpace?: () => void;
 }

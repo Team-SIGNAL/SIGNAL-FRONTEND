@@ -1,28 +1,36 @@
 import { BodyLarge } from "styles/text";
-import * as S from "./style";
+import * as _ from "./style";
 import { InputProps } from "./type";
 
+/** placeholder, value, onChange 필수 */
 function Input({
   label,
+  placeholder,
   onChange,
   type = "string",
-  placeholder,
   name,
   value,
+  enterSpace,
 }: InputProps) {
+  const onKeyDownEvent = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.keyCode === 13 && enterSpace) {
+      enterSpace();
+    }
+  };
   return (
-    <S.Container>
-      <S.Label>
+    <_.Container>
+      <_.Label>
         <BodyLarge>{label}</BodyLarge>
-      </S.Label>
-      <S.Input
+      </_.Label>
+      <_.Input
         onChange={onChange}
         type={type}
         placeholder={placeholder}
         name={name}
         value={value}
+        onKeyDown={onKeyDownEvent}
       />
-    </S.Container>
+    </_.Container>
   );
 }
 

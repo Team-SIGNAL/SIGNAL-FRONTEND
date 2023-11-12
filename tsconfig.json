@@ -21,7 +21,8 @@
       "pages/*": ["pages/*"],
       "styles/*": ["styles/*"],
       "assets/*": ["assets/*"],
-      "atoms/*": ["atoms/*"]
+      "atoms/*": ["atoms/*"],
+      "dummy/*": ["dummy/*"]
     }
   },
   "include": ["src"],

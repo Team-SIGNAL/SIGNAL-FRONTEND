@@ -7,3 +7,11 @@ export { default as hospitalImg } from "./img/landing/hospitalImg.png";
 
 export { default as logoImg } from "./img/logo.png";
 export { default as exprofileing } from "./img/exprofileimg.png";
+export { default as summaryDefaultImg } from "./img/summaryDefaultImg.png";
+
+export { default as loadingGif } from "./gif/loading.gif";
+
+export { default as recHobbyImg } from "./img/recHobby.png";
+export { default as recMusicImg } from "./img/recMusic.png";
+export { default as recSprotImg } from "./img/recSport.png";
+export { default as recVideoImg } from "./img/recViedo.png";

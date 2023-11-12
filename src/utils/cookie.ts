@@ -5,7 +5,7 @@ const cookie = new Cookies();
 export const setCookie = (
   name: string,
   value: boolean | string,
-  expires: string,
+  expires: Date,
   option: any = { path: "/" }
 ) => cookie.set(name, value, { expires, ...option });
 

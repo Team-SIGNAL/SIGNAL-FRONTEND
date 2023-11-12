@@ -1,0 +1,1 @@
+export type CategoryType = "MUSIC" | "SPORT" | "VIDEO" | "HOBBY"

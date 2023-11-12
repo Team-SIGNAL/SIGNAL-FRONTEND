@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const BackDrop = styled.div`
   position: fixed;
   top: 0;
@@ -12,15 +11,15 @@ export const BackDrop = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 100 ;
+  z-index: 100;
 `;
 
 export const Container = styled.div`
-    background-color: white;
-    min-width: 450px;
-    padding: 40px;
-    border-radius: 10px;
-    display: flex;
-    gap: 40px;
-    flex-direction: column;
+  background-color: white;
+  min-width: 450px;
+  padding: 40px;
+  border-radius: 10px;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
 `;
