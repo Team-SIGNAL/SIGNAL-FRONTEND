@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import axios, { AxiosError, AxiosInstance } from "axios";
 import { AUTH_URL } from "constants/config";
 import { delCookie, getCookie, setCookie } from "utils/cookie";
-import { PutLogin } from "./users";
+import { PutLogin } from "./poop/users";
 import { alertError } from "utils/toastify";
 
 export const AuthInstance: AxiosInstance = axios.create({

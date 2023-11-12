@@ -8,9 +8,9 @@ import {
   FeedTitleAtom,
 } from "atoms/feed";
 import { useMutation } from "@tanstack/react-query";
-import { postImage } from "utils/apis/attachment";
+import { postImage } from "utils/apis/poop/attachment";
 import { alertError, alertSuccess } from "utils/toastify";
-import { patchUpdateFeed, postFeed } from "utils/apis/feed";
+import { patchUpdateFeed, postFeed } from "utils/apis/poop/feed";
 
 function Submit() {
   const id = useRecoilValue(FeedIdAtom);

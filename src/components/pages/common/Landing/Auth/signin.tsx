@@ -12,10 +12,10 @@ import { Button } from "styles/button";
 import { alertError, alertSuccess, alertWarning } from "utils/toastify";
 //react-query
 import { useMutation } from "@tanstack/react-query";
-import { PostSignIn } from "utils/apis/users";
+import { PostSignIn } from "utils/apis/poop/admin";
 import { setCookie } from "utils/cookie";
 //type
-import { SignInDataType } from "types/auth.type";
+import { SignInDataType } from "types/poop/auth.type";
 import { useNavigate } from "react-router-dom";
 
 function SignIn() {

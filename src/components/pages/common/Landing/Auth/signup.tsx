@@ -11,8 +11,8 @@ import { Button } from "styles/button";
 import { alertError, alertSuccess, alertWarning } from "utils/toastify";
 // react-query
 import { useMutation } from "@tanstack/react-query";
-import { PostSignUp } from "utils/apis/users";
-import { SignUpDataType } from "types/auth.type";
+import { SignUpDataType } from "types/poop/auth.type";
+import { PostSignUp } from "utils/apis/poop/admin";
 
 const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*]).{8,32}$/;
 const numberRegex = /^\d{3}-\d{3,4}-\d{4}$/;

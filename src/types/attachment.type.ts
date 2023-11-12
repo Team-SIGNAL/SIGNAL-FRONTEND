@@ -1,4 +1,3 @@
-/** axios res 이미지 파일 업로드 */
-export type postImageFileResType = {
-  data: { image: string };
+export type AttachmentResType = {
+  image: string; // 이미지 url
 };

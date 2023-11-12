@@ -1,6 +1,6 @@
 import * as _ from "./style";
 import { useQuery } from "@tanstack/react-query";
-import { GetApprovalList } from "utils/apis/admin";
+import { GetApprovalList } from "utils/apis/poop/admin";
 import ArticleList from "../ArticleList";
 import { BodyLarge2 } from "styles/text";
 import Loading from "components/common/Loading";
