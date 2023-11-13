@@ -6,7 +6,7 @@ import { RefreshTokenResType } from "types/users.type";
 const router = "/users";
 
 /** 토큰 재발급 */
-export const PutRefreshTokenAxios = async () => {
+export const PutRefreshTokenApi = async () => {
   const refreshToken = getCookie("refresh_token");
 
   const { data }: { data: RefreshTokenResType } = await axios.put(

@@ -32,9 +32,8 @@ export type FeedCommentType = {
 
 /** 커뮤니티 피드 res 타입 */
 export type FeedListResType = {
-  feed_list: {
-    content: FeedListType[]; // 커뮤니티 목록 리스트
-  };
+  feed_list: FeedListType[]; // 커뮤니티 목록 리스트
+
   page_total: number; // 페이지 개수가 몇개인지
 };
 
