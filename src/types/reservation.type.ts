@@ -1,7 +1,7 @@
 export type IsReservationType = "STAND_BY" | "APPROVE" | "REFUSE";
 /** 예약 캘린더 res 타입 */
 export type CalendarListResType = {
-  reservation_list: ReservationCalendarType;
+  reservation_list: ReservationCalendarType[];
 };
 
 /** 예약 캘린더 목록 타입 */
