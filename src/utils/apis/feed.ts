@@ -46,12 +46,12 @@ export const GetFeedCommentListApi = async (
 };
 
 /** 어드민 커뮤니티 작성 - (feedContent={title, content, image}) */
-export const PostAdminWrite = async (feedContent: FeedWriteReqType) => {
+export const PostAdminWriteApi = async (feedContent: FeedWriteReqType) => {
   await AuthInstance.post(`${router}/admin`, feedContent);
 };
 
 /** 어드민 커뮤니티 수정 - (feedId, feedContent={title, content, image}) */
-export const PatchFeedUpdate = async (
+export const PatchFeedUpdateApi = async (
   feedId: number,
   feedContent: FeedWriteReqType
 ) => {
@@ -59,7 +59,7 @@ export const PatchFeedUpdate = async (
 };
 
 /** 커뮤니티 댓글 작성 - (feedId, feedComment={content}) */
-export const PostFeedCommentWrite = async (
+export const PostFeedCommentWriteApi = async (
   feedId: number,
   feedComment: FeedCommentWriteType
 ) => {

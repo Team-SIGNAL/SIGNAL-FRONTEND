@@ -32,7 +32,7 @@ export type InfoResType = {
   name: string; // 이름
   phone: string; // 전화번호
   profile: string; // 프로필 이미지 url
-  request_status: 1;
+  request_status: boolean; // 병원 인증 여부 - true: 승인된 관계자, false: 비승인된 관계자
 };
 
 /** 병원 관계자 승인 res 타입 - admin */
