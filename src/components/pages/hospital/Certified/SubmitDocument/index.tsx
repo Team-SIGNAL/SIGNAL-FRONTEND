@@ -4,9 +4,9 @@ import Plus from "assets/icon/plus";
 import { ChangeEvent, useRef, useState } from "react";
 import { Button } from "styles/button";
 import { useMutation } from "@tanstack/react-query";
-import { postImage } from "utils/apis/poop/attachment";
+// import { postImage } from "utils/apis/poop/attachment";
 import { alertError } from "utils/toastify";
-import { PatchImage } from "utils/apis/poop/admin";
+// import { PatchImage } from "utils/apis/poop/admin";
 
 function SubmitDocument() {
   const imageInputRef = useRef<HTMLInputElement>(null);
@@ -19,25 +19,25 @@ function SubmitDocument() {
     }
   };
 
-  const { mutate: imageMutate } = useMutation(postImage, {
-    onSuccess: (data) => {
-      const { image } = data;
-      imageSubmitMutate(image);
-    },
-    onError: () => {
-      alertError("오류가 발생했습니다. 관리자에게 문의해주세요");
-    },
-  });
+  // const { mutate: imageMutate } = useMutation(postImage, {
+  //   onSuccess: (data) => {
+  //     const { image } = data;
+  //     imageSubmitMutate(image);
+  //   },
+  //   onError: () => {
+  //     alertError("오류가 발생했습니다. 관리자에게 문의해주세요");
+  //   },
+  // });
 
-  const { mutate: imageSubmitMutate } = useMutation(PatchImage, {
-    onSuccess: () => {
-      alertError("성공")
-      setLoadingState(true);
-    },
-    onError: () => {
-      alertError("오류가 발생했습니다. 관리자에게 문의해주세요");
-    },
-  });
+  // const { mutate: imageSubmitMutate } = useMutation(PatchImage, {
+  //   onSuccess: () => {
+  //     alertError("성공")
+  //     setLoadingState(true);
+  //   },
+  //   onError: () => {
+  //     alertError("오류가 발생했습니다. 관리자에게 문의해주세요");
+  //   },
+  // });
 
   const SubmitFile = () => {
     if (!file) {
@@ -46,7 +46,7 @@ function SubmitDocument() {
       const formData = new FormData();
       formData.append("image", file);
       console.log(file);
-      imageMutate(formData);
+      // imageMutate(formData);
     }
   };
 

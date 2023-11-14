@@ -5,7 +5,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import Loading from "components/common/Loading";
 import Error from "components/common/Error";
 import { useEffect, useState } from "react";
-import { GetFeedList } from "utils/apis/poop/feed";
+// import { GetFeedList } from "utils/apis/poop/feed";
 import { useInView } from "react-intersection-observer";
 
 function List() {
@@ -19,16 +19,17 @@ function List() {
 
   const { isLoading, isError, isFetching, data, refetch } = useInfiniteQuery({
     queryKey: ["getFeedList", { tag, pagenum }],
-    queryFn: () => GetFeedList({ tag, pagenum }),
-    select: (data) => ({
-      pageParams: data.pageParams,
-      pages: data.pages.flatMap((page) => page.feed),
-    }),
-    getNextPageParam: (lastPage) => {
-      if (data && data.pageParams.length < lastPage.page_total)
-        return pagenum + 1;
-      return undefined;
-    },
+    queryFn: () => {},
+    // queryFn: () => GetFeedList({ tag, pagenum }),
+    // select: (data) => ({
+    //   pageParams: data.pageParams,
+    //   pages: data.pages.flatMap((page) => page.feed),
+    // }),
+    // getNextPageParam: (lastPage) => {
+    //   if (data && data.pageParams.length < lastPage.page_total)
+    //     return pagenum + 1;
+    //   return undefined;
+    // },
     onSuccess: () => {
       setPagenum(pagenum + 1);
     },
@@ -53,7 +54,7 @@ function List() {
     return (
       <>
         <_.Container>
-          {data && data.pages.map((d) => <ArticleFeed {...d} />)}
+          {/* {data && data.pages.map((d) => <ArticleFeed {...d} />)} */}
           <div ref={inViewRef}>{isFetching && <Loading />}</div>
         </_.Container>
       </>

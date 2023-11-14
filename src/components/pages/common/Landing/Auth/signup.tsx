@@ -11,8 +11,8 @@ import { Button } from "styles/button";
 import { alertError, alertSuccess, alertWarning } from "utils/toastify";
 // react-query
 import { useMutation } from "@tanstack/react-query";
-import { SignUpDataType } from "types/poop/auth.type";
-import { PostSignUp } from "utils/apis/poop/admin";
+// import { SignUpDataType } from "types/poop/auth.type";
+// import { PostSignUp } from "utils/apis/poop/admin";
 
 const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*]).{8,32}$/;
 const numberRegex = /^\d{3}-\d{3,4}-\d{4}$/;
@@ -25,7 +25,7 @@ function SignUp() {
   const signinModal = useSetRecoilState(signInModalAtom);
 
   /** 회원가입시 필요한 데이터 값 */
-  const [signupValue, setSignupValue] = useState<SignUpDataType>({
+  const [signupValue, setSignupValue] = useState({
     name: "",
     phone: "",
     account_id: "",
@@ -41,17 +41,17 @@ function SignUp() {
   };
 
   /** 회원가입 api 연동  */
-  const { mutate: signupMutate } = useMutation(PostSignUp, {
-    onSuccess: () => {
-      alertSuccess("회원가입에 성공하였습니다.");
-      setSignupModal(false);
-      signinModal(true);
-    },
-    onError: (err) => {
-      alertError("회원가입에 실패하였습니다.");
-      console.log(err)
-    },
-  });
+  // const { mutate: signupMutate } = useMutation(PostSignUp, {
+  //   onSuccess: () => {
+  //     alertSuccess("회원가입에 성공하였습니다.");
+  //     setSignupModal(false);
+  //     signinModal(true);
+  //   },
+  //   onError: (err) => {
+  //     alertError("회원가입에 실패하였습니다.");
+  //     console.log(err)
+  //   },
+  // });
 
   /** 회원가입시 필요한 정보가 옳은지 확인 */
   const checkDataisOk = (): boolean => {
@@ -88,7 +88,7 @@ function SignUp() {
   /** 회원강비 버튼 클릭 시  */
   const onClickSignup = () => {
     if (checkDataisOk()) {
-      signupMutate(signupValue);
+      // signupMutate(signupValue);
     }
   };
 

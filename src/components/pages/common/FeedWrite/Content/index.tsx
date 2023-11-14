@@ -10,7 +10,7 @@ import {
 } from "atoms/feed";
 import { ChangeEvent, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { GetFeed } from "utils/apis/poop/feed";
+// import { GetFeed } from "utils/apis/poop/feed";
 
 function Content() {
   const [title, setTitle] = useRecoilState(FeedTitleAtom);
@@ -27,7 +27,8 @@ function Content() {
 
   const { refetch, data } = useQuery({
     queryKey: ["getFeed", { id }],
-    queryFn: () => GetFeed({ id }),
+    queryFn: () => {},
+    // queryFn: () => GetFeed({ id }),
     retryOnMount: false,
     retry: 1,
     enabled: false,
@@ -39,13 +40,13 @@ function Content() {
     }
   }, [id, refetch]);
 
-  useEffect(() => {
-    if (data) {
-      setTitle(data.feed.title);
-      setContent(data.feed.content);
-      setFile(data.feed.img);
-    }
-  }, [data, setContent, setFile, setTitle]);
+  // useEffect(() => {
+  //   if (data) {
+  //     setTitle(data.feed.title);
+  //     setContent(data.feed.content);
+  //     setFile(data.feed.img);
+  //   }
+  // }, [data, setContent, setFile, setTitle]);
 
   return (
     <_.Container>
