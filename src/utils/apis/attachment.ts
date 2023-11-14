@@ -7,7 +7,7 @@ const router = "/attachment";
 export const PostImageApi = async (imgMultipart: FormData) => {
   const { data }: { data: AttachmentResType } = await AuthInstance.post(
     `${router}/`,
-    { imgMultipart }
+    imgMultipart
   );
   return data;
 };

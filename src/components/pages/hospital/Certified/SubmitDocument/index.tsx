@@ -1,11 +1,13 @@
 import * as _ from "./style";
 import { BodyLarge2, BodyLarge, SubTitle, BodyStrong } from "styles/text";
 import Plus from "assets/icon/plus";
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { Button } from "styles/button";
 import { useMutation } from "@tanstack/react-query";
 // import { postImage } from "utils/apis/poop/attachment";
 import { alertError } from "utils/toastify";
+import { useImageUpload } from "hooks/useImageUpload";
+import { PatchImageApi } from "utils/apis/admin";
 // import { PatchImage } from "utils/apis/poop/admin";
 
 function SubmitDocument() {
@@ -19,37 +21,27 @@ function SubmitDocument() {
     }
   };
 
-  // const { mutate: imageMutate } = useMutation(postImage, {
-  //   onSuccess: (data) => {
-  //     const { image } = data;
-  //     imageSubmitMutate(image);
-  //   },
-  //   onError: () => {
-  //     alertError("오류가 발생했습니다. 관리자에게 문의해주세요");
-  //   },
-  // });
+  const { mutate: imageSubmitMutate } = useMutation(PatchImageApi, {
+    onSuccess: () => {
+      alertError("성공");
+      setLoadingState(true);
+    },
+    onError: () => {
+      alertError("오류가 발생했습니다. 관리자에게 문의해주세요");
+    },
+  });
 
-  // const { mutate: imageSubmitMutate } = useMutation(PatchImage, {
-  //   onSuccess: () => {
-  //     alertError("성공")
-  //     setLoadingState(true);
-  //   },
-  //   onError: () => {
-  //     alertError("오류가 발생했습니다. 관리자에게 문의해주세요");
-  //   },
-  // });
+  const { uploadImage } = useImageUpload((hospital_image: any) => {
+    if (hospital_image) imageSubmitMutate({ hospital_image });
+  });
 
   const SubmitFile = () => {
     if (!file) {
       alertError("사업자등록증 또는 의료긱관개설신고(허가)증을 등록해주세요");
     } else {
-      const formData = new FormData();
-      formData.append("image", file);
-      console.log(file);
-      // imageMutate(formData);
+      uploadImage(file);
     }
   };
-
   return (
     <_.Contianer>
       <SubTitle>병원인증</SubTitle>
