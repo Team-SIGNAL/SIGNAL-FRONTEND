@@ -4,10 +4,10 @@ import { BodyStrong, SubTitle } from "styles/text";
 import Input from "components/common/Input";
 import ArticleComment from "../ArticleComment";
 import { useQuery } from "@tanstack/react-query";
-import { FeedCommentDataType } from "types/poop/feed.type";
+// import { FeedCommentDataType } from "types/poop/feed.type";
 import Loading from "components/common/Loading";
 import Error from "components/common/Error";
-import { getFeedComment } from "utils/apis/poop/feed";
+// import { getFeedComment } from "utils/apis/poop/feed";
 import { useLocation } from "react-router-dom";
 
 function Comment() {
@@ -23,10 +23,11 @@ function Comment() {
   }: {
     isLoading: boolean;
     isError: boolean;
-    data: FeedCommentDataType[] | undefined;
+    data: { writer: string; content: string; is_mine: boolean }[] | undefined;
   } = useQuery({
     queryKey: ["getFeedComment", { id }],
-    queryFn: () => getFeedComment({ id }),
+    queryFn: () => {},
+    // queryFn: () => getFeedComment({ id }),
     retryOnMount: false,
     retry: 0,
     refetchOnMount: false,

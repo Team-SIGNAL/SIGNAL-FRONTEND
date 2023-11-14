@@ -3,9 +3,9 @@ import * as _ from "./style";
 import More from "assets/icon/more";
 import Report from "assets/icon/report";
 import { useQuery } from "@tanstack/react-query";
-import { GetFeed } from "utils/apis/poop/feed";
+// import { GetFeed } from "utils/apis/poop/feed";
 import { useLocation } from "react-router-dom";
-import { FeedDataType } from "types/poop/feed.type";
+// import { FeedDataType } from "types/poop/feed.type";
 import Loading from "components/common/Loading";
 import Error from "components/common/Error";
 import ReportModal from "components/common/Report";
@@ -21,10 +21,19 @@ function Content() {
   }: {
     isLoading: boolean;
     isError: boolean;
-    data: FeedDataType | undefined;
+    data:
+      | {
+          title: string;
+          isMine: string;
+          date: string;
+          img: string;
+          content: string;
+        }
+      | undefined;
   } = useQuery({
     queryKey: ["getFeed", { id }],
-    queryFn: () => GetFeed({ id }),
+    queryFn: () => {},
+    // queryFn: () => GetFeed({ id }),
     retryOnMount: false,
     retry: 0,
     refetchOnMount: false,
