@@ -11,6 +11,10 @@ export const ProfileContainer = styled.div`
   display: flex;
   gap: 30px;
   align-items: center;
+  >img{
+    width: 70px;
+    border-radius: 50%;
+  }
 `;
 
 export const InfoContainer = styled.div`

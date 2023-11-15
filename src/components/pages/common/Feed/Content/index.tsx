@@ -1,18 +1,17 @@
-import { Body, Body2, TitleLarge } from "styles/text";
 import * as _ from "./style";
-import More from "assets/icon/more";
-import Report from "assets/icon/report";
-import { useQuery } from "@tanstack/react-query";
-// import { GetFeed } from "utils/apis/poop/feed";
-import { useLocation } from "react-router-dom";
-// import { FeedDataType } from "types/poop/feed.type";
+import { Body, Body2, TitleLarge } from "styles/text";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { useLocation, useNavigate } from "react-router-dom";
 import Loading from "components/common/Loading";
 import Error from "components/common/Error";
 import ReportModal from "components/common/Report";
+import { GetFeedDetailApi } from "utils/apis/feed";
+import { confirmDialog } from "utils/confirm";
 
 function Content() {
   const { pathname } = useLocation();
   const id = pathname.split("/")[3];
+  const nav = useNavigate();
 
   const {
     isLoading,
@@ -31,45 +30,51 @@ function Content() {
         }
       | undefined;
   } = useQuery({
-    queryKey: ["getFeed", { id }],
-    queryFn: () => {},
-    // queryFn: () => GetFeed({ id }),
+    queryKey: ["getFeed", id],
+    queryFn: () => GetFeedDetailApi(Number(id)),
     retry: 0,
     refetchOnMount: false,
     refetchOnWindowFocus: false,
   });
 
-  const onUpdate = () => {};
-  const onDelete = () => {};
+  const onUpdate = () => {
+    nav(`/hospital/feed/write?id=${id}`);
+  };
+
+  const onDelete = () => {
+    confirmDialog("진짜 삭제하시겠습니까?").then(() => {
+      // 커뮤니티 삭제 api
+    });
+  };
 
   if (isLoading) {
     return <Loading />;
   } else if (isError) {
     return <Error />;
-  } else {
-    return (
-      <_.Container>
-        {feed && (
-          <>
-            <_.TitleContainer>
-              <TitleLarge>{feed.title}</TitleLarge>
-              {feed.isMine && (
-                <div>
-                  <div>
-                    <Body onClick={onUpdate}>수정</Body>
-                    <Body onClick={onDelete}>삭제</Body>
-                  </div>
-                  <Body2>{feed.date}</Body2>
-                </div>
-              )}
-            </_.TitleContainer>
-            {feed.img && <_.FeedImg src={feed.img} alt="feed Img" />}
-            <_.FeedContent>{feed.content}</_.FeedContent>
-            {!feed.isMine && <ReportModal />}
-          </>
-        )}
-      </_.Container>
-    );
   }
+  return (
+    <_.Container>
+      {feed && (
+        <>
+          <_.TitleContainer>
+            <TitleLarge>{feed.title}</TitleLarge>
+            {feed.isMine && (
+              <div>
+                <div>
+                  <Body onClick={onUpdate}>수정</Body>
+                  <Body onClick={onDelete}>삭제</Body>
+                </div>
+                <Body2>{feed.date}</Body2>
+              </div>
+            )}
+          </_.TitleContainer>
+          {feed.img && <_.FeedImg src={feed.img} alt="feed Img" />}
+          <_.FeedContent>{feed.content}</_.FeedContent>
+          {!feed.isMine && <ReportModal />}
+        </>
+      )}
+    </_.Container>
+  );
 }
+
 export default Content;

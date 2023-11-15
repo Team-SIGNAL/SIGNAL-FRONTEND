@@ -1,10 +1,10 @@
 import * as _ from "./style";
 import { BodyStrong, SubTitle } from "styles/text";
-import { exprofileing } from "assets/index";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { nowPathAtom } from "atoms/path";
+import { defaultProfileImg } from "assets/index";
 
 function Sidebar() {
   const { pathname } = useLocation();
@@ -21,7 +21,7 @@ function Sidebar() {
       {path[1] === "hospital" ? (
         <>
           <_.ProfileContainer onClick={() => nav("/hospital/my")}>
-            <img src={exprofileing} alt="profileImg" />
+            <img src={defaultProfileImg} alt="profileImg" />
             <SubTitle>가나다라 병원</SubTitle>
           </_.ProfileContainer>
           {role === "HOSPITAL" && (

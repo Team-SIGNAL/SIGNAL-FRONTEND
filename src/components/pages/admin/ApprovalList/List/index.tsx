@@ -13,7 +13,7 @@ function List() {
   } = useQuery({
     queryKey: ["getApprovalList"],
     queryFn: () => {},
-    retryOnMount: false,
+     
     retry: 0,
     refetchOnMount: false,
     refetchOnWindowFocus: false,

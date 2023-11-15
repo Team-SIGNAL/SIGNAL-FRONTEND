@@ -34,7 +34,7 @@ export type FeedCommentType = {
 export type FeedListResType = {
   feed_list: FeedListType[]; // 커뮤니티 목록 리스트
 
-  page_total: number; // 페이지 개수가 몇개인지
+  last: boolean; // 마지막 페이지인지 확인
 };
 
 /** 커뮤니티 댓글 res 타입 */
@@ -46,7 +46,7 @@ export type FeedCommentResType = {
 export type FeedWriteReqType = {
   title: string; // 제목
   content: string; // 내용
-  image: string; // 이미지 url
+  image?: string; // 이미지 url
 };
 
 /** 커뮤니티 댓글 작성 req 타입 */

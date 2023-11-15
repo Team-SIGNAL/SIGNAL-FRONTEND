@@ -1,23 +1,20 @@
 import * as _ from "./style";
 import Input from "components/common/Input";
 import TextArea from "components/common/TextArea";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import {
-  FeedContentAtom,
-  FeedIdAtom,
-  FeedImageAtom,
-  FeedTitleAtom,
-} from "atoms/feed";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { FeedContentAtom, FeedImageAtom, FeedTitleAtom } from "atoms/feed";
 import { ChangeEvent, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-// import { GetFeed } from "utils/apis/poop/feed";
+import { useSearchParams } from "react-router-dom";
+import { GetFeedDetailApi } from "utils/apis/feed";
 
 function Content() {
   const [title, setTitle] = useRecoilState(FeedTitleAtom);
   const [content, setContent] = useRecoilState(FeedContentAtom);
   const setFile = useSetRecoilState(FeedImageAtom);
 
-  const id = useRecoilValue(FeedIdAtom);
+  const [seachParams] = useSearchParams();
+  const id = seachParams.get("id");
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -26,10 +23,9 @@ function Content() {
   };
 
   const { refetch, data } = useQuery({
-    queryKey: ["getFeed", { id }],
-    queryFn: () => {},
-    // queryFn: () => GetFeed({ id }),
-    retryOnMount: false,
+    queryKey: ["getFeed", id],
+    queryFn: () => GetFeedDetailApi(Number(id)),
+     
     retry: 1,
     enabled: false,
   });
@@ -40,13 +36,12 @@ function Content() {
     }
   }, [id, refetch]);
 
-  // useEffect(() => {
-  //   if (data) {
-  //     setTitle(data.feed.title);
-  //     setContent(data.feed.content);
-  //     setFile(data.feed.img);
-  //   }
-  // }, [data, setContent, setFile, setTitle]);
+  useEffect(() => {
+    if (data) {
+      setTitle(data.title);
+      setContent(data.content);
+    }
+  }, [data, setContent, setTitle]);
 
   return (
     <_.Container>
