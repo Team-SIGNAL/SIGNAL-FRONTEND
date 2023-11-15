@@ -16,11 +16,12 @@ export const GetFeedListApi = async (
   page: number,
   size: number
 ): Promise<FeedListResType> => {
-  const { data }: { data: FeedListResType } = await AuthInstance.get(
+  const { data } = await AuthInstance.get(
     `${router}/list?tag=${tag}&page=${page}&size=${size}`
   );
 
-  return data;
+  const { feed_list, last } = data;
+  return { feed_list: feed_list.content, last };
 };
 
 /** 커뮤니티 상세보기 - (feedId) */
@@ -51,17 +52,23 @@ export const PostAdminWriteApi = async (feedContent: FeedWriteReqType) => {
 };
 
 /** 어드민 커뮤니티 수정 - (feedId, feedContent={title, content, image}) */
-export const PatchFeedUpdateApi = async (
-  feedId: number,
-  feedContent: FeedWriteReqType
-) => {
+export const PatchFeedUpdateApi = async ({
+  feedId,
+  feedContent,
+}: {
+  feedId: number;
+  feedContent: FeedWriteReqType;
+}) => {
   await AuthInstance.patch(`${router}/${feedId}`, feedContent);
 };
 
 /** 커뮤니티 댓글 작성 - (feedId, feedComment={content}) */
-export const PostFeedCommentWriteApi = async (
-  feedId: number,
-  feedComment: FeedCommentWriteType
-) => {
+export const PostFeedCommentWriteApi = async ({
+  feedId,
+  feedComment,
+}: {
+  feedId: number;
+  feedComment: FeedCommentWriteType;
+}) => {
   await AuthInstance.post(`${router}/comment/${feedId}`, feedComment);
 };

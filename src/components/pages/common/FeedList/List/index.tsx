@@ -1,15 +1,16 @@
-import { useLocation } from "react-router-dom";
-import ArticleFeed from "../ArticleFeed";
 import * as _ from "./style";
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { useLocation } from "react-router-dom";
 import Loading from "components/common/Loading";
 import Error from "components/common/Error";
+import ArticleFeed from "../ArticleFeed";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-// import { GetFeedList } from "utils/apis/poop/feed";
 import { useInView } from "react-intersection-observer";
+import { GetFeedListApi } from "utils/apis/feed";
+import { FeedListTagType } from "types/feed.type";
 
 function List() {
-  const [pagenum, setPagenum] = useState<number>(0);
+  const [page, setPage] = useState<number>(0);
   const { search } = useLocation();
   const [tag, setTag] = useState<string>("GENERAL");
 
@@ -18,20 +19,19 @@ function List() {
   }, [search]);
 
   const { isLoading, isError, isFetching, data, refetch } = useInfiniteQuery({
-    queryKey: ["getFeedList", { tag, pagenum }],
-    queryFn: () => {},
-    // queryFn: () => GetFeedList({ tag, pagenum }),
-    // select: (data) => ({
-    //   pageParams: data.pageParams,
-    //   pages: data.pages.flatMap((page) => page.feed),
-    // }),
-    // getNextPageParam: (lastPage) => {
-    //   if (data && data.pageParams.length < lastPage.page_total)
-    //     return pagenum + 1;
-    //   return undefined;
-    // },
+    queryKey: ["getFeedList", { tag, page }],
+    queryFn: () => GetFeedListApi(tag as FeedListTagType, page, 10),
+    select: (data) => ({
+      pageParams: data.pageParams,
+      pages: data.pages.flatMap((page) => page.feed_list),
+    }),
+    getNextPageParam: (lastPage) => {
+      if (!lastPage.last)
+        return page + 1;
+      return undefined;
+    },
     onSuccess: () => {
-      setPagenum(pagenum + 1);
+      setPage(page + 1);
     },
     retryOnMount: false,
     retry: 0,
@@ -54,7 +54,7 @@ function List() {
     return (
       <>
         <_.Container>
-          {/* {data && data.pages.map((d) => <ArticleFeed {...d} />)} */}
+          {data && data.pages.map((d) => <ArticleFeed {...d} />)}
           <div ref={inViewRef}>{isFetching && <Loading />}</div>
         </_.Container>
       </>

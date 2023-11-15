@@ -1,14 +1,11 @@
-import { Body, Body2, TitleLarge } from "styles/text";
 import * as _ from "./style";
-import More from "assets/icon/more";
-import Report from "assets/icon/report";
+import { Body, Body2, TitleLarge } from "styles/text";
 import { useQuery } from "@tanstack/react-query";
-// import { GetFeed } from "utils/apis/poop/feed";
 import { useLocation } from "react-router-dom";
-// import { FeedDataType } from "types/poop/feed.type";
 import Loading from "components/common/Loading";
 import Error from "components/common/Error";
 import ReportModal from "components/common/Report";
+import { GetFeedDetailApi } from "utils/apis/feed";
 
 function Content() {
   const { pathname } = useLocation();
@@ -31,9 +28,8 @@ function Content() {
         }
       | undefined;
   } = useQuery({
-    queryKey: ["getFeed", { id }],
-    queryFn: () => {},
-    // queryFn: () => GetFeed({ id }),
+    queryKey: ["getFeed", id],
+    queryFn: () => GetFeedDetailApi(Number(id)),
     retry: 0,
     refetchOnMount: false,
     refetchOnWindowFocus: false,

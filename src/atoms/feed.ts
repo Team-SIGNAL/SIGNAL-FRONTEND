@@ -8,7 +8,7 @@ export const FeedContentAtom = atom<string>({
   key: "feedContent",
   default: "",
 });
-export const FeedImageAtom = atom<File | string | null>({
+export const FeedImageAtom = atom<File | null>({
   key: "feedImage",
   default: undefined,
 });
