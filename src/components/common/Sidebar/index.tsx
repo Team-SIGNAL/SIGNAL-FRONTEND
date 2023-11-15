@@ -5,12 +5,22 @@ import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { nowPathAtom } from "atoms/path";
 import { defaultProfileImg } from "assets/index";
+import { useQuery } from "@tanstack/react-query";
+import { GetUserInfoApi } from "utils/apis/admin";
 
 function Sidebar() {
   const { pathname } = useLocation();
   const nav = useNavigate();
   const [path, setPath] = useRecoilState(nowPathAtom);
   const role = localStorage.getItem("ROLE");
+
+  const { data } = useQuery({
+    queryKey: ["getInfo"],
+    queryFn: GetUserInfoApi,
+    retry: 0,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+  });
 
   useEffect(() => {
     setPath(pathname.split("/"));
@@ -21,8 +31,8 @@ function Sidebar() {
       {path[1] === "hospital" ? (
         <>
           <_.ProfileContainer onClick={() => nav("/hospital/my")}>
-            <img src={defaultProfileImg} alt="profileImg" />
-            <SubTitle>가나다라 병원</SubTitle>
+            <img src={data?.profile ?? defaultProfileImg} alt="profileImg" />
+            <SubTitle>{data?.name}</SubTitle>
           </_.ProfileContainer>
           {role === "HOSPITAL" && (
             <_.MenuContainer>

@@ -17,8 +17,8 @@ export type SignInReqType = {
 export type SignInResType = {
   access_token: string; // access token
   refresh_token: string; // refresh token
-  expire_at: string; // refresh token 만료시간
-  access_at: string; // access token 만료시간
+  refresh_exp: string; // refresh token 만료시간
+  access_exp: string; // access token 만료시간
   role: "ADMIN" | "HOSPITAL" | "NON_HOSPIAL"; // 어드민, 병원 관계자, 승인이 안된 병원 관계자
 };
 

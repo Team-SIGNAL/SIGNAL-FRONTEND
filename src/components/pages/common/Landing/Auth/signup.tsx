@@ -11,8 +11,8 @@ import { Button } from "styles/button";
 import { alertError, alertSuccess, alertWarning } from "utils/toastify";
 // react-query
 import { useMutation } from "@tanstack/react-query";
-// import { SignUpDataType } from "types/poop/auth.type";
-// import { PostSignUp } from "utils/apis/poop/admin";
+import { PostSignUpApi } from "utils/apis/admin";
+import { SignUpReqType } from "types/admin.type";
 
 const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*]).{8,32}$/;
 const numberRegex = /^\d{3}-\d{3,4}-\d{4}$/;
@@ -25,11 +25,12 @@ function SignUp() {
   const signinModal = useSetRecoilState(signInModalAtom);
 
   /** 회원가입시 필요한 데이터 값 */
-  const [signupValue, setSignupValue] = useState({
+  const [signupValue, setSignupValue] = useState<SignUpReqType>({
     name: "",
     phone: "",
     account_id: "",
     password: "",
+    address: "",
   });
   /** 비밀번호 확인 */
   const [passwordCheck, setPasswordCheck] = useState<string>("");
@@ -41,17 +42,17 @@ function SignUp() {
   };
 
   /** 회원가입 api 연동  */
-  // const { mutate: signupMutate } = useMutation(PostSignUp, {
-  //   onSuccess: () => {
-  //     alertSuccess("회원가입에 성공하였습니다.");
-  //     setSignupModal(false);
-  //     signinModal(true);
-  //   },
-  //   onError: (err) => {
-  //     alertError("회원가입에 실패하였습니다.");
-  //     console.log(err)
-  //   },
-  // });
+  const { mutate: signupMutate } = useMutation(PostSignUpApi, {
+    onSuccess: () => {
+      alertSuccess("회원가입에 성공하였습니다.");
+      setSignupModal(false);
+      signinModal(true);
+    },
+    onError: (err) => {
+      alertError("회원가입에 실패하였습니다.");
+      console.log(err);
+    },
+  });
 
   /** 회원가입시 필요한 정보가 옳은지 확인 */
   const checkDataisOk = (): boolean => {
@@ -88,7 +89,7 @@ function SignUp() {
   /** 회원강비 버튼 클릭 시  */
   const onClickSignup = () => {
     if (checkDataisOk()) {
-      // signupMutate(signupValue);
+      signupMutate(signupValue);
     }
   };
 
@@ -111,6 +112,13 @@ function SignUp() {
               onChange={onChange}
               value={signupValue.phone}
               name="phone"
+            />
+            <Input
+              label="병원 주소"
+              placeholder="대전광역시 유성구 가정북로 76 우정관"
+              onChange={onChange}
+              value={signupValue.address}
+              name="address"
             />
             <Input
               label="아이디"
