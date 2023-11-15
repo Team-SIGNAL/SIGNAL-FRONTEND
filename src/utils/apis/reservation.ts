@@ -17,7 +17,7 @@ export const GetCalendarListApi = async (
   return data;
 };
 
-/** 병원 날짜별 예약 - (date=(년-월-01)) */
+/** 병원 날짜별 예약 - (date) */
 export const GetDateApi = async (date: string): Promise<CalendarResType> => {
   const { data }: { data: CalendarResType } = await AuthInstance.get(
     `${router}/date=${date}`

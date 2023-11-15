@@ -1,3 +1,5 @@
+import { IsReservationType } from "types/reservation.type";
+
 export type StateBadgeProps = {
-  state: "StandBy" | "Approval";
+  state: IsReservationType
 };
