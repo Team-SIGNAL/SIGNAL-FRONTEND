@@ -8,14 +8,14 @@ function ArticleList({
   name,
   phone,
 }: {
-  id: string;
+  id: number;
   name: string;
   phone: string;
 }) {
   const nav = useNavigate();
 
   return (
-    <_.Container onClick={() => nav("/admin/2")}>
+    <_.Container onClick={() => nav(`/admin/${id}`)}>
       <_.InfoContainer>
         <BodyLarge2>{name}</BodyLarge2>
         <Body2>{phone}</Body2>
