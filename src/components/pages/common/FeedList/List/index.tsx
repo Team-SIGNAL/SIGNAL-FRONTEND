@@ -33,7 +33,7 @@ function List() {
     onSuccess: () => {
       setPage(page + 1);
     },
-    retryOnMount: false,
+     
     retry: 0,
     enabled: false,
     refetchOnMount: false,

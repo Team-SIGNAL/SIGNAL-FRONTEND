@@ -11,6 +11,7 @@ import {
   GetFeedCommentListApi,
   PostFeedCommentWriteApi,
 } from "utils/apis/feed";
+import { alertError } from "utils/toastify";
 
 function Comment() {
   const [feedInput, setFeedInput] = useState<string>("");
@@ -22,22 +23,27 @@ function Comment() {
     isLoading,
     data: feedComment,
     isError,
+    refetch,
   }: {
     isLoading: boolean;
     isError: boolean;
     data: { writer: string; content: string; is_mine: boolean }[] | undefined;
+    refetch: () => {};
   } = useQuery({
     queryKey: ["getFeedComment", id],
     queryFn: () => GetFeedCommentListApi(Number(id)),
-    retryOnMount: false,
     retry: 0,
     refetchOnMount: false,
     refetchOnWindowFocus: false,
   });
 
   const { mutate: postFeedMutate } = useMutation(PostFeedCommentWriteApi, {
-    onSuccess: () => {},
-    onError: () => {},
+    onSuccess: () => {
+      refetch();
+    },
+    onError: () => {
+      alertError("댓글 작성에 실패하였습니다.");
+    },
   });
 
   if (isLoading) {

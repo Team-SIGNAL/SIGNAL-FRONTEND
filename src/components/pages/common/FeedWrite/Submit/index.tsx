@@ -3,7 +3,6 @@ import { Button } from "styles/button";
 import { useRecoilValue } from "recoil";
 import {
   FeedContentAtom,
-  FeedIdAtom,
   FeedImageAtom,
   FeedTitleAtom,
 } from "atoms/feed";
@@ -11,9 +10,11 @@ import { useMutation } from "@tanstack/react-query";
 import { alertError, alertSuccess } from "utils/toastify";
 import { useImageUpload } from "hooks/useImageUpload";
 import { PatchFeedUpdateApi, PostAdminWriteApi } from "utils/apis/feed";
+import { useSearchParams } from "react-router-dom";
 
 function Submit() {
-  const id = useRecoilValue(FeedIdAtom);
+  const [seachParams] = useSearchParams();
+  const id = seachParams.get("id");
   const title = useRecoilValue(FeedTitleAtom);
   const content = useRecoilValue(FeedContentAtom);
   const file = useRecoilValue(FeedImageAtom);

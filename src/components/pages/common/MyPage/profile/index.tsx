@@ -9,6 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 import { GetUserInfoApi } from "utils/apis/admin";
 import Loading from "components/common/Loading";
 import Error from "components/common/Error";
+import { defaultProfileImg } from "assets/index";
 
 function Profile() {
   const nav = useNavigate();
@@ -39,7 +40,7 @@ function Profile() {
   return (
     <_.Container>
       <_.ProfileContainer>
-        <img src={userInfo?.profile} alt="profile img" />
+        <img src={userInfo?.profile ?? defaultProfileImg} alt="profile img" />
         <_.InfoContainer>
           <Title>{userInfo?.name}</Title>
           <BodyLarge>{userInfo?.phone}</BodyLarge>
