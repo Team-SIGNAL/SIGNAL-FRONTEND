@@ -34,7 +34,6 @@ function Content() {
     queryKey: ["getFeed", { id }],
     queryFn: () => {},
     // queryFn: () => GetFeed({ id }),
-    retryOnMount: false,
     retry: 0,
     refetchOnMount: false,
     refetchOnWindowFocus: false,
