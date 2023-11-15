@@ -8,15 +8,11 @@ import { signInModalAtom } from "atoms/header";
 import Modal from "components/common/Modal";
 import Input from "components/common/Input";
 import { Button } from "styles/button";
-// import { Body } from "styles/text";
 import { alertError, alertSuccess, alertWarning } from "utils/toastify";
-//react-query
-import { useMutation } from "@tanstack/react-query";
-// import { PostSignIn } from "utils/apis/poop/admin";
-import { setCookie } from "utils/cookie";
-//type
-// import { SignInDataType } from "types/poop/auth.type";
 import { useNavigate } from "react-router-dom";
+import { PostSignInApi } from "utils/apis/admin";
+import { useMutation } from "@tanstack/react-query";
+import { setCookie } from "utils/cookie";
 
 function SignIn() {
   const nav = useNavigate();
@@ -34,31 +30,27 @@ function SignIn() {
   };
 
   /** 로그인 api 연동 */
-  // const { mutate: signinMutate } = useMutation(PostSignIn, {
-  //   onSuccess: (data) => {
-  //     alertSuccess("로그인에 성공하였습니다.");
-  //     setCookie("access_token", data.access_token, new Date(data.access_exp));
-  //     setCookie(
-  //       "refresh_token",
-  //       data.refresh_token,
-  //       new Date(data.refresh_exp)
-  //     );
-  //     localStorage.setItem("ROLE", data.role);
-  //     if (data.role === "ADMIN") nav("/admin");
-  //     else if (data.role === "HOSPITAL") nav("/hospital");
-  //     else nav("/certified");
-  //   },
-  //   onError: () => {
-  //     alertError("아이디와 비밀번호를 확인해주세요.");
-  //   },
-  // });
+  const { mutate: signinMutate } = useMutation(PostSignInApi, {
+    onSuccess: (data) => {
+      alertSuccess("로그인에 성공하였습니다.");
+      setCookie("access_token", data.access_token, new Date(data.access_exp));
+      setCookie("refresh_token", data.refresh_token, new Date(data.refresh_exp));
+      localStorage.setItem("ROLE", data.role);
+      if (data.role === "ADMIN") nav("/admin");
+      else if (data.role === "HOSPITAL") nav("/hospital");
+      else nav("/certified");
+    },
+    onError: () => {
+      alertError("아이디와 비밀번호를 확인해주세요.");
+    },
+  });
 
   /** 로그인 버튼 클릭시 동작 */
   const onClickSignIn = () => {
     if (signInValue.account_id === "") alertWarning("아이디를 입력해주세요.");
     else if (signInValue.password === "")
       alertWarning("비밀번호를 입력해주세요.");
-    // else signinMutate(signInValue);
+    else signinMutate(signInValue);
   };
 
   return (
