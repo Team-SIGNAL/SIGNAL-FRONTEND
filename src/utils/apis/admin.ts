@@ -1,8 +1,6 @@
 import {
-  ApproveDetailResType,
   ImageReqType,
   InfoResType,
-  ListResType,
   SignInReqType,
   SignInResType,
   SignUpReqType,
@@ -36,24 +34,6 @@ export const PatchImageApi = async (Image: ImageReqType) => {
 export const GetUserInfoApi = async (): Promise<InfoResType> => {
   const { data }: { data: InfoResType } = await AuthInstance.get(
     `${router}/info`
-  );
-  return data;
-};
-
-/** 병원관계자 승인 리스트 목록 */
-export const GetHospitalListApi = async (): Promise<ListResType> => {
-  const { data }: { data: ListResType } = await AuthInstance.get(
-    `${router}/list`
-  );
-  return data;
-};
-
-/** 병원관계자 승인 상세보기 - (hospitalId) */
-export const GetHospitalDetailApi = async (
-  hospitalId: number
-): Promise<ApproveDetailResType> => {
-  const { data }: { data: ApproveDetailResType } = await AuthInstance.get(
-    `${router}/${hospitalId}`
   );
   return data;
 };

@@ -4,16 +4,20 @@ import Plus from "assets/icon/plus";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { Button } from "styles/button";
 import { useMutation } from "@tanstack/react-query";
-// import { postImage } from "utils/apis/poop/attachment";
 import { alertError } from "utils/toastify";
 import { useImageUpload } from "hooks/useImageUpload";
 import { PatchImageApi } from "utils/apis/admin";
-// import { PatchImage } from "utils/apis/poop/admin";
+import { SubmitDocumentProps } from "./type";
+import { AuthStatus } from "types/admin.type";
 
-function SubmitDocument() {
+function SubmitDocument({ requestStatus }: SubmitDocumentProps) {
   const imageInputRef = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File>();
-  const [loadingState, setLoadingState] = useState<boolean>(false);
+  const [loadingState, setLoadingState] = useState<AuthStatus>("REFUSE");
+
+  useEffect(() => {
+    setLoadingState(requestStatus ?? "REFUSE");
+  }, [requestStatus]);
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -24,7 +28,7 @@ function SubmitDocument() {
   const { mutate: imageSubmitMutate } = useMutation(PatchImageApi, {
     onSuccess: () => {
       alertError("성공");
-      setLoadingState(true);
+      setLoadingState("WAIT");
     },
     onError: () => {
       alertError("오류가 발생했습니다. 관리자에게 문의해주세요");
@@ -45,7 +49,7 @@ function SubmitDocument() {
   return (
     <_.Contianer>
       <SubTitle>병원인증</SubTitle>
-      {loadingState ? (
+      {loadingState === "WAIT" ? (
         <BodyLarge2>
           승인중입니다. 관리자가 거절시 재승인 받을 수 있습니다.
         </BodyLarge2>
