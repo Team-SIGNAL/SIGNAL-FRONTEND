@@ -28,7 +28,7 @@ export const GetFeedDetailApi = async (
   feedId: number
 ): Promise<FeedDetailType> => {
   const { data }: { data: FeedDetailType } = await AuthInstance.get(
-    `${router}/${feedId}`
+    `${router}/admin/${feedId}`
   );
 
   return data;

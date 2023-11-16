@@ -5,9 +5,10 @@ import {
   SignInReqType,
   SignInResType,
   SignUpReqType,
+  ApproveDetailResType,
+  ListResType,
 } from "types/admin.type";
 import { AuthInstance, DefaultInstance } from ".";
-import { ApproveDetailResType, ListResType } from "types/hospitalAuth";
 
 const router = "/admin";
 
