@@ -12,3 +12,7 @@ export const FeedImageAtom = atom<File | null>({
   key: "feedImage",
   default: undefined,
 });
+export const FeedShowImageAtom = atom<string>({
+  key: "feedShowImage",
+  default: "",
+});

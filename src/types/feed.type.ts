@@ -12,13 +12,14 @@ export type FeedListType = {
 
 /** 커뮤니티 피드 상세보기 타입 */
 export type FeedDetailType = {
-  img: string; // 이미지 url
+  image: string; // 이미지 url
   title: string; // 제목
-  date: string; // 날짜
+  create_date: string; // 날짜
   writer: string; // 작성자
   content: string; // 내용
   profile: string; // 프로필 이미지 url
-  isMine: boolean; // 내거인지 아닌지 boolean
+  mine: boolean; // 내거인지 아닌지 boolean
+  id: number;
 };
 
 /** 커뮤니티 댓글 타입 */

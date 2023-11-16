@@ -13,7 +13,7 @@ function List() {
     retry: 0,
     refetchOnMount: false,
     refetchOnWindowFocus: false,
-    select: (data) => data.approve_request_list,
+    select: (data) => data.auth_request_list,
   });
 
   if (isLoading) {

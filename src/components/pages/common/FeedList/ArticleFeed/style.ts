@@ -10,7 +10,7 @@ export const Container = styled.div`
   > div {
     display: flex;
     justify-content: space-between;
-    > p {
+    > p:last-child {
       color: ${Color.gray[400]};
     }
   }
