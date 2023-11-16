@@ -1,3 +1,5 @@
+import { AuthStatusType } from "types/admin.type";
+
 export type SubmitDocumentProps = {
-  requestStatus?: boolean;
+  requestStatus?: AuthStatusType;
 };
