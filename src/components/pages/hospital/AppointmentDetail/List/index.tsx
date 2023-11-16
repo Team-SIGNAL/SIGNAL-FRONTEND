@@ -5,7 +5,6 @@ import { useQuery } from "@tanstack/react-query";
 import { GetDateApi } from "utils/apis/reservation";
 import Loading from "components/common/Loading";
 import Error from "components/common/Error";
-import { ReservationType } from "types/reservation.type";
 
 function List() {
   const { pathname } = useLocation();

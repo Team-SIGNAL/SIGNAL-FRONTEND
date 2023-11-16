@@ -1,10 +1,10 @@
 import { BodyStrong, Body2 } from "styles/text";
 import * as _ from "./stlye";
 import { useQuery } from "@tanstack/react-query";
-import { GetHospitalDetailApi } from "utils/apis/hospitalAuth";
 import { useLocation } from "react-router-dom";
 import Loading from "components/common/Loading";
 import Error from "components/common/Error";
+import { GetHospitalDetailApi } from "utils/apis/admin";
 
 function Info() {
   const { pathname } = useLocation();

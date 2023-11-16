@@ -13,12 +13,11 @@ function Certified() {
     refetchOnWindowFocus: false,
   });
 
-
   return (
     <_.FlexContainer>
       <_.Container>
-        <UserInfo name={data?.name} phone={data?.phone}/>
-        <SubmitDocument requestStatus={data?.request_status} />
+        <UserInfo name={data?.name} phone={data?.phone} />
+        <SubmitDocument requestStatus={data?.auth_status} />
       </_.Container>
     </_.FlexContainer>
   );
