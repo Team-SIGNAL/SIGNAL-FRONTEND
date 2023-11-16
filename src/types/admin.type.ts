@@ -27,15 +27,40 @@ export type ImageReqType = {
   hospital_image: string; // 이미지 url
 };
 
+/** 병원 정보 조회 auth_status 타입 */
+export type AuthStatusType = "VERIFIED" | "REFUSE" | "WAIT";
+
 /** 내 정보 조회 res 타입 */
 export type InfoResType = {
   name: string; // 이름
   phone: string; // 전화번호
   profile: string; // 프로필 이미지 url
-  auth_status: boolean; // 병원 인증 여부
+  auth_status: AuthStatusType; // 병원 인증 여부
+  address: string;
 };
 
 export type PatchHospitalAuthReqType = {
   id: number;
   auth_status: boolean;
+};
+
+/** 병원 관계자 승인 res 타입 - admin */
+export type ListResType = {
+  auth_request_list: ApproveListType[]; // 병원 관계자 승인 리스트
+};
+
+/** 병원 관계자 승인 리스트 타입 - admin */
+export type ApproveListType = {
+  id: number; // 병원 승인 고유 id
+  name: string; // 이음
+  phone: string; // 전화번호
+};
+
+/** 병원 관계자 승인 디테일 타입 - admin */
+export type ApproveDetailResType = {
+  name: string; // 이름
+  phone: string; // 전화번호
+  address: string; // 주소
+  hospital_image: string; // 뱡원 승인 이미지
+  account_id: string; // 아이디
 };
