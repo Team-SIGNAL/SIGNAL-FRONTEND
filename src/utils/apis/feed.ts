@@ -17,11 +17,10 @@ export const GetFeedListApi = async (
   size: number
 ): Promise<FeedListResType> => {
   const { data } = await AuthInstance.get(
-    `${router}/list?tag=${tag}&page=${page}&size=${size}`
+    `${router}/admin/list?tag=${tag}&page=${page}&size=${size}`
   );
 
-  const { feed_list, last } = data;
-  return { feed_list: feed_list.content, last };
+  return data;
 };
 
 /** 커뮤니티 상세보기 - (feedId) */

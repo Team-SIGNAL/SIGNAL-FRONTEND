@@ -33,8 +33,7 @@ export type FeedCommentType = {
 /** 커뮤니티 피드 res 타입 */
 export type FeedListResType = {
   feed_list: FeedListType[]; // 커뮤니티 목록 리스트
-
-  last: boolean; // 마지막 페이지인지 확인
+  page_total: number; // 마지막 페이지인지 확인
 };
 
 /** 커뮤니티 댓글 res 타입 */

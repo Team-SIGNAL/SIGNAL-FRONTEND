@@ -48,7 +48,7 @@ function SubmitDocument({ requestStatus }: SubmitDocumentProps) {
   return (
     <_.Contianer>
       <SubTitle>병원인증</SubTitle>
-      {!loadingState ? (
+      {loadingState ? (
         <BodyLarge2>
           승인중입니다. 관리자가 거절시 재승인 받을 수 있습니다.
         </BodyLarge2>
