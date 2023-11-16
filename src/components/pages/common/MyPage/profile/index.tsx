@@ -44,6 +44,7 @@ function Profile() {
         <_.InfoContainer>
           <Title>{userInfo?.name}</Title>
           <BodyLarge>{userInfo?.phone}</BodyLarge>
+          <BodyLarge>{userInfo?.address}</BodyLarge>
         </_.InfoContainer>
       </_.ProfileContainer>
       <Button

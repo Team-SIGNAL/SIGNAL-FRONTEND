@@ -17,18 +17,6 @@ function Content() {
     isLoading,
     data: feed,
     isError,
-  }: {
-    isLoading: boolean;
-    isError: boolean;
-    data:
-      | {
-          title: string;
-          isMine: string;
-          date: string;
-          img: string;
-          content: string;
-        }
-      | undefined;
   } = useQuery({
     queryKey: ["getFeed", id],
     queryFn: () => GetFeedDetailApi(Number(id)),
@@ -58,19 +46,19 @@ function Content() {
         <>
           <_.TitleContainer>
             <TitleLarge>{feed.title}</TitleLarge>
-            {feed.isMine && (
+            {feed.mine && (
               <div>
                 <div>
                   <Body onClick={onUpdate}>수정</Body>
                   <Body onClick={onDelete}>삭제</Body>
                 </div>
-                <Body2>{feed.date}</Body2>
+                <Body2>{feed.create_date}</Body2>
               </div>
             )}
           </_.TitleContainer>
-          {feed.img && <_.FeedImg src={feed.img} alt="feed Img" />}
+          {feed.image && <_.FeedImg src={feed.image} alt="feed Img" />}
           <_.FeedContent>{feed.content}</_.FeedContent>
-          {!feed.isMine && <ReportModal />}
+          {!feed.mine && <ReportModal />}
         </>
       )}
     </_.Container>

@@ -1,31 +1,35 @@
 import * as _ from "./style";
 import Input from "components/common/Input";
 import TextArea from "components/common/TextArea";
-import { useRecoilState, useSetRecoilState } from "recoil";
-import { FeedContentAtom, FeedImageAtom, FeedTitleAtom } from "atoms/feed";
+import { useRecoilState } from "recoil";
+import { FeedContentAtom, FeedShowImageAtom, FeedTitleAtom } from "atoms/feed";
 import { ChangeEvent, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
 import { GetFeedDetailApi } from "utils/apis/feed";
+import { useImageUpload } from "hooks/useImageUpload";
 
 function Content() {
   const [title, setTitle] = useRecoilState(FeedTitleAtom);
   const [content, setContent] = useRecoilState(FeedContentAtom);
-  const setFile = useSetRecoilState(FeedImageAtom);
+  const [image, setImage] = useRecoilState(FeedShowImageAtom);
 
   const [seachParams] = useSearchParams();
   const id = seachParams.get("id");
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      setFile(e.target.files[0]);
+      uploadImage(e.target.files[0]);
     }
   };
+
+  const { uploadImage } = useImageUpload((image: string) => {
+    setImage(image);
+  });
 
   const { refetch, data } = useQuery({
     queryKey: ["getFeed", id],
     queryFn: () => GetFeedDetailApi(Number(id)),
-     
     retry: 1,
     enabled: false,
   });
@@ -40,11 +44,13 @@ function Content() {
     if (data) {
       setTitle(data.title);
       setContent(data.content);
+      setImage(data.image);
     }
-  }, [data, setContent, setTitle]);
+  }, [data, setContent, setTitle, setImage]);
 
   return (
     <_.Container>
+      {image && <_.ShowImage src={image} />}
       <Input
         label="제목"
         placeholder="제목"

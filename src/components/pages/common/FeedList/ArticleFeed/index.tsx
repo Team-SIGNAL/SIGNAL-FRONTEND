@@ -4,7 +4,7 @@ import { Body2, BodyLarge2 } from "styles/text";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FeedListType } from "types/feed.type";
 
-function ArticleFeed({ image, title, creat_date, id, name }: FeedListType) {
+function ArticleFeed({ image, title, id, name }: FeedListType) {
   const nav = useNavigate();
   const { pathname } = useLocation();
 
@@ -12,10 +12,9 @@ function ArticleFeed({ image, title, creat_date, id, name }: FeedListType) {
     <_.Container onClick={() => nav(`${pathname}/${id}`)}>
       <_.SummaryImg src={image ? image : summaryDefaultImg} />
       <div>
-        <Body2>{creat_date}</Body2>
+        <BodyLarge2>{title}</BodyLarge2>
         <Body2>{name}</Body2>
       </div>
-      <BodyLarge2>{title}</BodyLarge2>
     </_.Container>
   );
 }

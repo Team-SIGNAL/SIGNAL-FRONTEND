@@ -7,3 +7,8 @@ export const Container = styled.div`
 `;
 
 export const FileInput = styled.input``;
+
+export const ShowImage = styled.img`
+  max-height: 300px;
+  width: fit-content;
+`
