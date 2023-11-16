@@ -1,6 +1,3 @@
-/** 병원 관계자 승인 상태 */
-export type AuthStatus = "VERIFIED" | "REFUSE" | "WAIT";
-
 /** 회원가입 req 타입 */
 export type SignUpReqType = {
   name: string; // 이름 //2 ~ 20
@@ -35,5 +32,10 @@ export type InfoResType = {
   name: string; // 이름
   phone: string; // 전화번호
   profile: string; // 프로필 이미지 url
-  request_status: AuthStatus; // 병원 인증 여부
+  auth_status: boolean; // 병원 인증 여부
+};
+
+export type PatchHospitalAuthReqType = {
+  id: number;
+  auth_status: boolean;
 };

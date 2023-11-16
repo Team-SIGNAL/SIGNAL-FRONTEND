@@ -4,7 +4,7 @@ import ArticleList from "../ArticleList";
 import { BodyLarge2 } from "styles/text";
 import Loading from "components/common/Loading";
 import Error from "components/common/Error";
-import { GetHospitalListApi } from "utils/apis/hospitalAuth";
+import { GetHospitalListApi } from "utils/apis/admin";
 
 function List() {
   const { isLoading, isError, data } = useQuery({

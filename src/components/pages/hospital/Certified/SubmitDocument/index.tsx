@@ -8,15 +8,14 @@ import { alertError } from "utils/toastify";
 import { useImageUpload } from "hooks/useImageUpload";
 import { PatchImageApi } from "utils/apis/admin";
 import { SubmitDocumentProps } from "./type";
-import { AuthStatus } from "types/admin.type";
 
 function SubmitDocument({ requestStatus }: SubmitDocumentProps) {
   const imageInputRef = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File>();
-  const [loadingState, setLoadingState] = useState<AuthStatus>("REFUSE");
+  const [loadingState, setLoadingState] = useState<boolean>(false);
 
   useEffect(() => {
-    setLoadingState(requestStatus ?? "REFUSE");
+    setLoadingState(requestStatus ?? false);
   }, [requestStatus]);
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -28,7 +27,7 @@ function SubmitDocument({ requestStatus }: SubmitDocumentProps) {
   const { mutate: imageSubmitMutate } = useMutation(PatchImageApi, {
     onSuccess: () => {
       alertError("성공");
-      setLoadingState("WAIT");
+      setLoadingState(true);
     },
     onError: () => {
       alertError("오류가 발생했습니다. 관리자에게 문의해주세요");
@@ -49,7 +48,7 @@ function SubmitDocument({ requestStatus }: SubmitDocumentProps) {
   return (
     <_.Contianer>
       <SubTitle>병원인증</SubTitle>
-      {loadingState === "WAIT" ? (
+      {!loadingState ? (
         <BodyLarge2>
           승인중입니다. 관리자가 거절시 재승인 받을 수 있습니다.
         </BodyLarge2>
