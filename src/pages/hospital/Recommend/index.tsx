@@ -14,7 +14,7 @@ function Recommend() {
       <Button
         width="fit-content"
         backColor={Color.gray[400]}
-        onClick={() => nav(`hospital/rec/write`)}
+        onClick={() => nav("write")}
       >
         작성
       </Button>
