@@ -18,6 +18,7 @@ import RecommendDetail from "pages/hospital/RecommendDetail";
 // admin
 import ApprovalList from "pages/admin/ApprovalList";
 import ApprovalDetail from "pages/admin/ApprovalDetail";
+import RecommendWrite from "pages/hospital/RecommendWrite";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
             <Route path="feed/write" element={<FeedWrite />} />
             <Route path="rec" element={<Recommend />} />
             <Route path="rec/:id" element={<RecommendDetail />} />
+            <Route path="rec/write" element={<RecommendWrite />} />
           </Route>
         </Route>
         <Route path="/admin">
