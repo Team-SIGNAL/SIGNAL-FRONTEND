@@ -2,17 +2,14 @@ import FileInput from "components/common/FileInput";
 import * as _ from "./style";
 import Input from "components/common/Input";
 import TextArea from "components/common/TextArea";
-import React, { useState } from "react";
+import React from "react";
 import { RecWriteReqType } from "types/rec.type";
 import { useImageUpload } from "hooks/useImageUpload";
+import { useRecoilState } from "recoil";
+import { RecWriteAtom } from "atoms/rec";
 
 function Content() {
-  const [data, setData] = useState<RecWriteReqType>({
-    title: "",
-    content: "",
-    link: "",
-    image: "",
-  });
+  const [data, setData] = useRecoilState<RecWriteReqType>(RecWriteAtom);
 
   const onChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>

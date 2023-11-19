@@ -1,6 +1,4 @@
-import { FeedCommentWriteType } from "./../../types/feed.type";
 import {
-  FeedCommentResType,
   FeedDetailType,
   FeedListResType,
   FeedListTagType,
@@ -34,17 +32,6 @@ export const GetFeedDetailApi = async (
   return data;
 };
 
-/** 커뮤니티 상세보기 댓글 - (feedId) */
-export const GetFeedCommentListApi = async (
-  feedId: number
-): Promise<FeedCommentResType> => {
-  const { data }: { data: FeedCommentResType } = await AuthInstance.get(
-    `${router}/comment/${feedId}`
-  );
-
-  return data;
-};
-
 /** 어드민 커뮤니티 작성 - (feedContent={title, content, image}) */
 export const PostAdminWriteApi = async (feedContent: FeedWriteReqType) => {
   await AuthInstance.post(`${router}/admin`, feedContent);
@@ -59,15 +46,4 @@ export const PatchFeedUpdateApi = async ({
   feedContent: FeedWriteReqType;
 }) => {
   await AuthInstance.patch(`${router}/${feedId}`, feedContent);
-};
-
-/** 커뮤니티 댓글 작성 - (feedId, feedComment={content}) */
-export const PostFeedCommentWriteApi = async ({
-  feedId,
-  feedComment,
-}: {
-  feedId: number;
-  feedComment: FeedCommentWriteType;
-}) => {
-  await AuthInstance.post(`${router}/comment/${feedId}`, feedComment);
 };

@@ -7,11 +7,11 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import Loading from "components/common/Loading";
 import Error from "components/common/Error";
 import { useLocation } from "react-router-dom";
+import { alertError } from "utils/toastify";
 import {
   GetFeedCommentListApi,
   PostFeedCommentWriteApi,
-} from "utils/apis/feed";
-import { alertError } from "utils/toastify";
+} from "utils/apis/comment";
 
 function Comment() {
   const [feedInput, setFeedInput] = useState<string>("");
@@ -24,15 +24,11 @@ function Comment() {
     data: feedComment,
     isError,
     refetch,
-  }: {
-    isLoading: boolean;
-    isError: boolean;
-    data: { writer: string; content: string; is_mine: boolean }[] | undefined;
-    refetch: () => {};
   } = useQuery({
     queryKey: ["getFeedComment", id],
     queryFn: () => GetFeedCommentListApi(Number(id)),
     retry: 0,
+    select: (data) => data.comment_list,
     refetchOnMount: false,
     refetchOnWindowFocus: false,
   });
@@ -40,6 +36,7 @@ function Comment() {
   const { mutate: postFeedMutate } = useMutation(PostFeedCommentWriteApi, {
     onSuccess: () => {
       refetch();
+      setFeedInput("");
     },
     onError: () => {
       alertError("댓글 작성에 실패하였습니다.");

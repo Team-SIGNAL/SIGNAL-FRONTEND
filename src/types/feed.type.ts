@@ -22,24 +22,10 @@ export type FeedDetailType = {
   id: number;
 };
 
-/** 커뮤니티 댓글 타입 */
-export type FeedCommentType = {
-  content: string; // 내용
-  writer: string; // 작성자 이름
-  is_mine: boolean; // 내거인지 아닌지 boolean
-  date_time: string; // 작성 날짜
-  profile: string; // 프로필 이미지 url
-};
-
 /** 커뮤니티 피드 res 타입 */
 export type FeedListResType = {
   feed_list: FeedListType[]; // 커뮤니티 목록 리스트
   page_total: number; // 마지막 페이지인지 확인
-};
-
-/** 커뮤니티 댓글 res 타입 */
-export type FeedCommentResType = {
-  comment: FeedCommentType[]; // 댓글
 };
 
 /** 커뮤니티 작성 req 타입 */
@@ -47,9 +33,4 @@ export type FeedWriteReqType = {
   title: string; // 제목
   content: string; // 내용
   image?: string; // 이미지 url
-};
-
-/** 커뮤니티 댓글 작성 req 타입 */
-export type FeedCommentWriteType = {
-  content: string; // 댓글 내용 작성
 };
