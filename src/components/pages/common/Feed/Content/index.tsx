@@ -1,6 +1,6 @@
 import * as _ from "./style";
 import { Body, Body2, TitleLarge } from "styles/text";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { useLocation, useNavigate } from "react-router-dom";
 import Loading from "components/common/Loading";
 import Error from "components/common/Error";
@@ -19,9 +19,8 @@ function Content() {
     isError,
   } = useQuery({
     queryKey: ["getFeed", id],
-    queryFn: () => GetFeedDetailApi(Number(id)),
+    queryFn: () => GetFeedDetailApi(id),
     retry: 0,
-    refetchOnMount: false,
     refetchOnWindowFocus: false,
   });
 

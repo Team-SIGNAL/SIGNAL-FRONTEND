@@ -20,6 +20,7 @@ function Submit() {
   const image = useRecoilValue(FeedShowImageAtom);
   const nav = useNavigate();
   console.log(pathname.split("/"));
+
   const { mutate: postFeedMutate } = useMutation(PostAdminWriteApi, {
     onSuccess: () => {
       alertSuccess("게시글 작성에 성공하였습니다.");
@@ -42,7 +43,7 @@ function Submit() {
   const onSubmitFeed = () => {
     if (id) {
       postFeedUpdateMutate({
-        feedId: Number(id),
+        feedId: id,
         feedContent: { title, content, image },
       });
     } else {

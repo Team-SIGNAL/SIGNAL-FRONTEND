@@ -26,7 +26,7 @@ function Comment() {
     refetch,
   } = useQuery({
     queryKey: ["getFeedComment", id],
-    queryFn: () => GetFeedCommentListApi(Number(id)),
+    queryFn: () => GetFeedCommentListApi(id),
     retry: 0,
     select: (data) => data.comment_list,
     refetchOnMount: false,
@@ -64,7 +64,7 @@ function Comment() {
           disabled={!feedInput.length}
           onClick={() =>
             postFeedMutate({
-              feedId: Number(id),
+              feedId: id,
               feedComment: { content: feedInput },
             })
           }

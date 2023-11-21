@@ -1,4 +1,4 @@
 export interface ArticleCommentProps {
-  writer: string;
+  name: string;
   content: string;
 }

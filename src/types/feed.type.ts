@@ -3,7 +3,7 @@ export type FeedListTagType = "GENERAL" | "HOSPITAL" | "NOTIFICATION";
 
 /** 커뮤니티 피드 리스트 목록 타입 */
 export type FeedListType = {
-  id: number; // feed list 고유 id
+  id: string; // feed list 고유 id
   title: string; // 제목
   image: string; // 이미지 url
   name: string; // 작성자 이름
@@ -19,7 +19,7 @@ export type FeedDetailType = {
   content: string; // 내용
   profile: string; // 프로필 이미지 url
   mine: boolean; // 내거인지 아닌지 boolean
-  id: number;
+  id: string;
 };
 
 /** 커뮤니티 피드 res 타입 */
