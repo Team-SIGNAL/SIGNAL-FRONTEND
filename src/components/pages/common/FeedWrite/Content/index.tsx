@@ -29,7 +29,7 @@ function Content() {
 
   const { refetch, data } = useQuery({
     queryKey: ["getFeed", id],
-    queryFn: () => GetFeedDetailApi(Number(id)),
+    queryFn: () => GetFeedDetailApi(id ?? ""),
     retry: 1,
     enabled: false,
   });
