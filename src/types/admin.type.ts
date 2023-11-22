@@ -28,7 +28,7 @@ export type ImageReqType = {
 };
 
 /** 병원 정보 조회 auth_status 타입 */
-export type AuthStatusType = "VERIFIED" | "REFUSE" | "WAIT";
+export type AuthStatusType = "VERIFIED" | "NON_AUTH" | "WAIT";
 
 /** 내 정보 조회 res 타입 */
 export type InfoResType = {
@@ -40,8 +40,8 @@ export type InfoResType = {
 };
 
 export type PatchHospitalAuthReqType = {
-  id: number;
-  auth_status: boolean;
+  id: string;
+  auth_status: AuthStatusType;
 };
 
 /** 병원 관계자 승인 res 타입 - admin */
@@ -51,7 +51,7 @@ export type ListResType = {
 
 /** 병원 관계자 승인 리스트 타입 - admin */
 export type ApproveListType = {
-  id: number; // 병원 승인 고유 id
+  id: string; // 병원 승인 고유 id
   name: string; // 이음
   phone: string; // 전화번호
 };

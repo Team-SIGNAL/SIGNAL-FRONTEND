@@ -1,7 +1,7 @@
 /** 커뮤니티 댓글 타입 */
 export type FeedCommentType = {
   content: string; // 내용
-  writer: string; // 작성자 이름
+  name: string; // 작성자 이름
   create_date_time: string; // 작성 날짜
   profile: string; // 프로필 이미지 url
 };

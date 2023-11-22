@@ -1,6 +1,6 @@
 export type CategoryArticleProps = {
   title: string;
-  time: string;
-  id: number;
+  id: string;
   cat: string;
+  image: string;
 };

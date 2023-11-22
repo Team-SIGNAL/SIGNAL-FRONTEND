@@ -56,7 +56,7 @@ export const GetHospitalListApi = async (): Promise<ListResType> => {
 
 /** 병원관계자 승인 상세보기 - (hospitalId) */
 export const GetHospitalDetailApi = async (
-  hospitalId: number
+  hospitalId: string
 ): Promise<ApproveDetailResType> => {
   const { data }: { data: ApproveDetailResType } = await AuthInstance.get(
     `${router}/${hospitalId}`

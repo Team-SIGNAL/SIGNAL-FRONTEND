@@ -2,11 +2,12 @@ import FileInput from "components/common/FileInput";
 import * as _ from "./style";
 import Input from "components/common/Input";
 import TextArea from "components/common/TextArea";
-import React from "react";
+import React, { useEffect } from "react";
 import { RecWriteReqType } from "types/rec.type";
 import { useImageUpload } from "hooks/useImageUpload";
 import { useRecoilState } from "recoil";
 import { RecWriteAtom } from "atoms/rec";
+import Selector from "components/common/Selecter";
 
 function Content() {
   const [data, setData] = useRecoilState<RecWriteReqType>(RecWriteAtom);
@@ -25,8 +26,20 @@ function Content() {
     if (e.target.files) uploadImage(e.target.files[0]);
   };
 
+
   return (
     <_.Container>
+      <_.SelectCatagoryContainer>
+        <label>카테고리</label>
+        <Selector
+          onChange={(e) => {
+            setData({ ...data, category: e.target.value });
+          }}
+          option={["음악", "영상", "운동", "취미"]}
+          value={["MUSIC", "VIDEO", "SPORT", "HOBBy"]}
+          selected="MUSIC"
+        />
+      </_.SelectCatagoryContainer>
       <Input
         placeholder="제목"
         name="title"
@@ -55,6 +68,7 @@ function Content() {
         onChange={onChangeFile}
         value={data.image}
       />
+      {data.image && <img src={data.image} alt="ads" />}
     </_.Container>
   );
 }

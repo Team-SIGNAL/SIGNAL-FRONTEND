@@ -1,4 +1,4 @@
-export type IsReservationType = "STAND_BY" | "APPROVE" | "REFUSE";
+export type IsReservationType = "WAIT" | "APPROVE" | "REFUSE";
 /** 예약 캘린더 res 타입 */
 export type CalendarListResType = {
   reservation_list: ReservationCalendarType[];
@@ -18,20 +18,22 @@ export type CalendarResType = {
 
 /** 예약 상세보기 콕록 타입 */
 export type ReservationType = {
-  id: number;
+  id: string;
   name: string;
   birth: string;
-  dateTime: string;
-  is_reservation: IsReservationType;
+  date: string;
+  reservation_status: IsReservationType;
+  time: string;
 };
 
 /** 예약 상세보기 res 타입 */
 export type ReservationDetailType = {
   name: string;
   birth: string;
-  dateTime: string;
+  date: string;
   phone: string;
   gender: "MAN" | "WOMAN";
-  is_reservation: IsReservationType;
+  reservation_status: IsReservationType;
   reason: string;
+  time: string;
 };
