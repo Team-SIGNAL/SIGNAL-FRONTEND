@@ -7,7 +7,7 @@ export const PostFeedCommentWriteApi = async ({
   feedId,
   feedComment,
 }: {
-  feedId: number;
+  feedId: string;
   feedComment: FeedCommentWriteType;
 }) => {
   await AuthInstance.post(`${router}/admin/${feedId}`, feedComment);
@@ -15,7 +15,7 @@ export const PostFeedCommentWriteApi = async ({
 
 /** 커뮤니티 상세보기 댓글 - (feedId) */
 export const GetFeedCommentListApi = async (
-  feedId: number
+  feedId: string
 ): Promise<FeedCommentResType> => {
   const { data }: { data: FeedCommentResType } = await AuthInstance.get(
     `${router}/${feedId}`
