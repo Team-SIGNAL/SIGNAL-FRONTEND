@@ -6,7 +6,7 @@ function StateBadge({ state }: StateBadgeProps) {
   return (
     <_.Container state={state}>
       <Body>
-        {state === "STAND_BY" ? "대기" : state === "APPROVE" ? "승인" : "거절"}
+        {state === "WAIT" ? "대기" : state === "APPROVE" ? "승인" : "거절"}
       </Body>
     </_.Container>
   );

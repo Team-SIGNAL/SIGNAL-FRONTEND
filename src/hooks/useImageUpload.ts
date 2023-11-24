@@ -9,7 +9,6 @@ export const useImageUpload = (onUploadSuccess: any) => {
       onUploadSuccess(res.image);
     },
     onError: (err) => {
-      console.log(err);
       alertError("파일 업로드에 실패하였습니다.");
     },
   });

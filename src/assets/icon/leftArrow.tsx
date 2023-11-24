@@ -1,4 +1,4 @@
-function LeftArrow({ width = "360ox", color="black" }: { width?: string; color?: string }) {
+function LeftArrow({ width = "360px", color="black" }: { width?: string; color?: string }) {
   return (
     <svg
       width={width}

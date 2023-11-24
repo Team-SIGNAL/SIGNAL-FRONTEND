@@ -6,7 +6,7 @@ export const Container = styled.div<StateBadgeProps>`
   background-color: ${({ state }) =>
     state === "APPROVE"
       ? Color.primary[100]
-      : state === "STAND_BY"
+      : state === "WAIT"
       ? Color.gray[500]
       : "red"};
   color: ${Color.white};

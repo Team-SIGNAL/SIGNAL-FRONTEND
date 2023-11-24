@@ -16,7 +16,7 @@ function Info() {
     isLoading,
   } = useQuery({
     queryKey: ["GetHospitalDetailApi", id],
-    queryFn: () => GetHospitalDetailApi(Number(id)),
+    queryFn: () => GetHospitalDetailApi(id),
     retry: 0,
     refetchOnMount: false,
     refetchOnWindowFocus: false,

@@ -20,12 +20,14 @@ function Content() {
   };
 
   const { uploadImage } = useImageUpload((image: string) => {
+    console.log(image);
     setData({ ...data, image });
   });
   const onChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) uploadImage(e.target.files[0]);
+    if (e.target.files) {
+      uploadImage(e.target.files[0]);
+    }
   };
-
 
   return (
     <_.Container>

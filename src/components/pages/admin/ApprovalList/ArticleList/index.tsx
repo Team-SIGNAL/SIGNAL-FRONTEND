@@ -8,7 +8,7 @@ function ArticleList({
   name,
   phone,
 }: {
-  id: number;
+  id: string;
   name: string;
   phone: string;
 }) {
