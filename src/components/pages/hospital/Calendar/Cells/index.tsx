@@ -9,7 +9,7 @@ import {
 } from "date-fns";
 import * as _ from "./style";
 import { CalendarCellsProps } from "./type";
-import { SubTitle, Body } from "styles/text";
+import { SubTitle } from "styles/text";
 
 function Cells({ currentMonth, onDateClick }: CalendarCellsProps) {
   const monthStart = startOfMonth(currentMonth);
@@ -45,7 +45,7 @@ function Cells({ currentMonth, onDateClick }: CalendarCellsProps) {
             }
           >
             <SubTitle>{formattedDate}</SubTitle>
-            {isSameMonth(day, monthStart) && (
+            {/* {isSameMonth(day, monthStart) && (
               <_.ClinicContainer>
                 <div>
                   <Body>진료신청</Body>
@@ -56,7 +56,7 @@ function Cells({ currentMonth, onDateClick }: CalendarCellsProps) {
                   <Body>00개</Body>
                 </div>
               </_.ClinicContainer>
-            )}
+            )} */}
           </_.Date>
         </_.Day>
       );

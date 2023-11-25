@@ -8,5 +8,6 @@ export const RecWriteAtom = atom<RecWriteReqType>({
     content: "",
     link: "",
     image: "",
+    category: "MUSIC",
   },
 });

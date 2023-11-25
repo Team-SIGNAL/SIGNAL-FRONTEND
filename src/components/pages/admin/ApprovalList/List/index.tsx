@@ -11,8 +11,6 @@ function List() {
     queryKey: ["GetHospitalListApi"],
     queryFn: GetHospitalListApi,
     retry: 0,
-    refetchOnMount: false,
-    refetchOnWindowFocus: false,
     select: (data) => data.auth_request_list,
   });
 

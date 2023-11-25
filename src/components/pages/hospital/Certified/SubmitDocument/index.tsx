@@ -13,10 +13,10 @@ import { AuthStatusType } from "types/admin.type";
 function SubmitDocument({ requestStatus }: SubmitDocumentProps) {
   const imageInputRef = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File>();
-  const [loadingState, setLoadingState] = useState<AuthStatusType>("REFUSE");
+  const [loadingState, setLoadingState] = useState<AuthStatusType>("NON_AUTH");
 
   useEffect(() => {
-    setLoadingState(requestStatus ?? "REFUSE");
+    setLoadingState(requestStatus ?? "NON_AUTH");
   }, [requestStatus]);
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {

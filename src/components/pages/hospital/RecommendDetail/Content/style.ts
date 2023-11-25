@@ -5,15 +5,12 @@ import Color from "styles/color";
 export const Container = styled.div`
   display: flex;
   gap: 20px;
-  @media screen and (max-width: 1050px) {
-    flex-direction: column;
-  }
+  flex-direction: column;
 `;
 export const EctContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 40%;
   > div {
     display: flex;
     justify-content: space-between;
@@ -23,7 +20,7 @@ export const EctContainer = styled.div`
   }
 `;
 export const Image = styled.img`
-  width: 100%;
+  width: 200px;
 `;
 export const LinkButton = styled(Link)`
   text-decoration: none;
@@ -34,6 +31,11 @@ export const ContentContainer = styled.div`
   flex-direction: column;
   gap: 10px;
   flex: 1;
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
 `;
 export const Content = styled.pre`
   white-space: break-spaces;

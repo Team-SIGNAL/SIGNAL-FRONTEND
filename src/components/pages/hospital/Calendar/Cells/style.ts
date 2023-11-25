@@ -31,6 +31,7 @@ export const Day = styled.div<{
           background-color: green;
         `
       : css`
+          cursor: pointer;
           color: ${Color.black};
           &:first-child {
             color: #ff0000;
@@ -38,11 +39,13 @@ export const Day = styled.div<{
           &:last-child {
             color: #007aff;
           }
+          &:hover{
+            background-color: ${Color.gray[100]};
+          }
         `}
 `;
 
 export const Date = styled.div`
-  cursor: pointer;
   width: 50%;
   height: 50%;
   border-radius: 50%;
@@ -62,7 +65,7 @@ export const ClinicContainer = styled.div`
     align-items: center;
     gap: 5px;
     > p:first-child {
-      @media (max-width: 1180px){
+      @media (max-width: 1180px) {
         display: none;
       }
     }

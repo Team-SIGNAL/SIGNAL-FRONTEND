@@ -3,16 +3,16 @@ import LeftArrow from "assets/icon/leftArrow";
 import RightArrow from "assets/icon/rightArrow";
 import { DateArrowProps } from "./type";
 
-function DateArrow({ prev, now, next }:DateArrowProps) {
+function DateArrow({ prev, now, next }: DateArrowProps) {
   return (
     <_.ArrowContainer>
-      <button onClick={prev}>
+      <_.ArrowButton onClick={prev}>
         <LeftArrow />
-      </button>
-      <button onClick={now}>오늘</button>
-      <button onClick={next}>
+      </_.ArrowButton>
+      <_.TodayButton onClick={now}>오늘</_.TodayButton>
+      <_.ArrowButton onClick={next}>
         <RightArrow />
-      </button>
+      </_.ArrowButton>
     </_.ArrowContainer>
   );
 }

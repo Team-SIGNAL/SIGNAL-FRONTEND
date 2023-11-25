@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { GetDateApi } from "utils/apis/reservation";
 import Loading from "components/common/Loading";
 import Error from "components/common/Error";
+import { BodyLarge } from "styles/text";
 
 function List() {
   const { pathname } = useLocation();
@@ -16,7 +17,9 @@ function List() {
     retry: 0,
     refetchOnMount: false,
     refetchOnWindowFocus: false,
+    select: (data) => data.appointment_list,
   });
+
   if (isLoading) {
     <Loading />;
   } else if (isError) {
@@ -24,9 +27,11 @@ function List() {
   }
   return (
     <_.Container>
-      {data?.appointment_list.map((v) => (
-        <ListArticle {...v} />
-      ))}
+      {!data?.length ? (
+        <BodyLarge>예약이 없습니다.</BodyLarge>
+      ) : (
+        data.map((v) => <ListArticle {...v} />)
+      )}
     </_.Container>
   );
 }

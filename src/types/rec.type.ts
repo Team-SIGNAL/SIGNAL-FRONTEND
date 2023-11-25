@@ -26,6 +26,7 @@ export type RecArticletListReqType = {
   image: string;
   content: string;
   id: string;
+  link: string;
 };
 
 export type RecGetListReqType = {

@@ -21,7 +21,10 @@ function Approve() {
   });
   const confirm = (auth_status: boolean) => {
     confirmDialog(`${auth_status ? "승인" : "거절"}하시겠습니까?`).then(() =>
-      postFeedMutate({ id: Number(id), auth_status })
+      postFeedMutate({
+        id: id,
+        auth_status: auth_status ? "VERIFIED" : "NON_AUTH",
+      })
     );
   };
 

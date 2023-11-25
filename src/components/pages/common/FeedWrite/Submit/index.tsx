@@ -19,7 +19,6 @@ function Submit() {
   const content = useRecoilValue(FeedContentAtom);
   const image = useRecoilValue(FeedShowImageAtom);
   const nav = useNavigate();
-  console.log(pathname.split("/"));
 
   const { mutate: postFeedMutate } = useMutation(PostAdminWriteApi, {
     onSuccess: () => {

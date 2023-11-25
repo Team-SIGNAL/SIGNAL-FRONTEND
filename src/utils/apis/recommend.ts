@@ -30,6 +30,6 @@ export const GetRecommendDetailApi = async (
 export const GetRecommendListApi = async (
   category: CategoryType
 ): Promise<RecGetListReqType> => {
-  const { data } = await AuthInstance.get(`${router}?category=${category}`);
+  const { data } = await AuthInstance.get(`${router}/list?category=${category.toUpperCase()}`);
   return data;
 };

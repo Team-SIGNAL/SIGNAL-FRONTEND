@@ -33,5 +33,5 @@ export const InformationTable = styled.div`
 `;
 
 export const Image = styled.img`
-width: 70%;
+width: 40%;
 `

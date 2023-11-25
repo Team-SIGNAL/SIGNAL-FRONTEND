@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { GetFeedListApi } from "utils/apis/feed";
 import { FeedListTagType } from "types/feed.type";
+import { BodyLarge } from "styles/text";
 
 function List() {
   const [page, setPage] = useState<number>(0);
@@ -62,7 +63,7 @@ function List() {
     return (
       <>
         <_.Container>
-          {data && data.feed_list.map((v) => <ArticleFeed {...v} />)}
+          {data && data.feed_list.length ? data.feed_list.map((v) => <ArticleFeed {...v} />):<BodyLarge>게시글이 존재하지 않아요..ㅠㅠ</BodyLarge>}
           {/* {data && data.pages.map((d) => <ArticleFeed {...d} />)} */}
           {/* <div ref={inViewRef}>{isFetching && <Loading />}</div> */}
         </_.Container>

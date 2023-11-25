@@ -50,7 +50,6 @@ function SignUp() {
     },
     onError: (err) => {
       alertError("회원가입에 실패하였습니다.");
-      console.log(err);
     },
   });
 
