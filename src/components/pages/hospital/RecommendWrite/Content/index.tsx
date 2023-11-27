@@ -2,7 +2,7 @@ import FileInput from "components/common/FileInput";
 import * as _ from "./style";
 import Input from "components/common/Input";
 import TextArea from "components/common/TextArea";
-import React, { useEffect } from "react";
+import React from "react";
 import { RecWriteReqType } from "types/rec.type";
 import { useImageUpload } from "hooks/useImageUpload";
 import { useRecoilState } from "recoil";
@@ -11,7 +11,6 @@ import Selector from "components/common/Selecter";
 
 function Content() {
   const [data, setData] = useRecoilState<RecWriteReqType>(RecWriteAtom);
-
   const onChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -20,7 +19,6 @@ function Content() {
   };
 
   const { uploadImage } = useImageUpload((image: string) => {
-    console.log(image);
     setData({ ...data, image });
   });
   const onChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,9 +26,10 @@ function Content() {
       uploadImage(e.target.files[0]);
     }
   };
-
+  
   return (
     <_.Container>
+      {data.image && <_.Image src={data.image} alt="이미지" />}
       <_.SelectCatagoryContainer>
         <label>카테고리</label>
         <Selector
@@ -64,13 +63,7 @@ function Content() {
         onChange={onChange}
         value={data.link}
       />
-      <FileInput
-        label="이미지"
-        name="image"
-        onChange={onChangeFile}
-        value={data.image}
-      />
-      {data.image && <img src={data.image} alt="ads" />}
+      <FileInput label="이미지 (선택)" name="image" onChange={onChangeFile} />
     </_.Container>
   );
 }
