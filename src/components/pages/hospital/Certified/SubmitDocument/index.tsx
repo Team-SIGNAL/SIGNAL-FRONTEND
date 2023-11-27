@@ -1,17 +1,23 @@
 import * as _ from "./style";
 import { BodyLarge2, BodyLarge, SubTitle, BodyStrong } from "styles/text";
 import Plus from "assets/icon/plus";
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { Button } from "styles/button";
 import { useMutation } from "@tanstack/react-query";
-import { postImage } from "utils/apis/attachment";
-import { alertError } from "utils/toastify";
-import { PatchHostpitalImg } from "utils/apis/admin";
+import { alertError, alertSuccess } from "utils/toastify";
+import { useImageUpload } from "hooks/useImageUpload";
+import { PatchImageApi } from "utils/apis/admin";
+import { SubmitDocumentProps } from "./type";
+import { AuthStatusType } from "types/admin.type";
 
-function SubmitDocument() {
+function SubmitDocument({ requestStatus }: SubmitDocumentProps) {
   const imageInputRef = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File>();
-  const [loadingState, setLoadingState] = useState<boolean>(false);
+  const [loadingState, setLoadingState] = useState<AuthStatusType>("NON_AUTH");
+
+  useEffect(() => {
+    setLoadingState(requestStatus ?? "NON_AUTH");
+  }, [requestStatus]);
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -19,41 +25,31 @@ function SubmitDocument() {
     }
   };
 
-  const { mutate: imageMutate } = useMutation(postImage, {
-    onSuccess: (data) => {
-      const { image } = data;
-      imageSubmitMutate(image);
+  const { mutate: imageSubmitMutate } = useMutation(PatchImageApi, {
+    onSuccess: () => {
+      alertSuccess("병원 인증 요청에 성공하였습니다. 인증까지 2~3일이 소요될 수 있습니다.");
+      setLoadingState("WAIT");
     },
     onError: () => {
       alertError("오류가 발생했습니다. 관리자에게 문의해주세요");
     },
   });
 
-  const { mutate: imageSubmitMutate } = useMutation(PatchHostpitalImg, {
-    onSuccess: () => {
-      alertError("성공")
-      setLoadingState(true);
-    },
-    onError: () => {
-      alertError("오류가 발생했습니다. 관리자에게 문의해주세요");
-    },
+  const { uploadImage } = useImageUpload((hospital_image: any) => {
+    if (hospital_image) imageSubmitMutate({ hospital_image });
   });
 
   const SubmitFile = () => {
     if (!file) {
       alertError("사업자등록증 또는 의료긱관개설신고(허가)증을 등록해주세요");
     } else {
-      const formData = new FormData();
-      formData.append("image", file);
-      console.log(file);
-      imageMutate(formData);
+      uploadImage(file);
     }
   };
-
   return (
     <_.Contianer>
       <SubTitle>병원인증</SubTitle>
-      {loadingState ? (
+      {loadingState === "WAIT" ? (
         <BodyLarge2>
           승인중입니다. 관리자가 거절시 재승인 받을 수 있습니다.
         </BodyLarge2>

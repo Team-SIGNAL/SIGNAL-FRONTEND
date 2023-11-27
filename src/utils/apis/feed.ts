@@ -1,50 +1,49 @@
 import {
-  GetFeedCommentResType,
-  GetFeedDataResType,
-  GetFeedDataType,
-  GetFeedListDataResType,
-  GetFeedListDataType,
-  PostFeed,
+  FeedDetailType,
+  FeedListResType,
+  FeedListTagType,
+  FeedWriteReqType,
 } from "types/feed.type";
 import { AuthInstance } from ".";
 
 const router = "/feed";
 
-export const GetFeedList = async ({ tag, pagenum }: GetFeedListDataType) => {
-  const { data }: GetFeedListDataResType = await AuthInstance.get(
-    `/${router}/list?tag=${tag}&pagenum=${pagenum}&num=10`
+/** 커뮤니티 목록 - 무한 스크롤  (tag,page,size) */
+export const GetFeedListApi = async (
+  tag: FeedListTagType,
+  page: number,
+  size: number
+): Promise<FeedListResType> => {
+  const { data } = await AuthInstance.get(
+    `${router}/admin/list?tag=${tag}&page=${page}&size=${size}`
   );
+
   return data;
 };
 
-export const GetFeed = async ({ id }: GetFeedDataType) => {
-  const { data }: GetFeedDataResType = await AuthInstance.get(
-    `${router}/${id}`
+/** 커뮤니티 상세보기 - (feedId) */
+export const GetFeedDetailApi = async (
+  feedId: string
+): Promise<FeedDetailType> => {
+  const { data }: { data: FeedDetailType } = await AuthInstance.get(
+    `${router}/admin/${feedId}`
   );
+
   return data;
 };
 
-export const getFeedComment = async ({ id }: GetFeedDataType) => {
-  const { data }: GetFeedCommentResType = await AuthInstance.get(
-    `${router}/${id}`
-  );
-  return data;
+/** 어드민 커뮤니티 작성 - (feedContent={title, content, image}) */
+export const PostAdminWriteApi = async (feedContent: FeedWriteReqType) => {
+  await AuthInstance.post(`${router}/admin`, feedContent);
 };
 
-export const postFeed = async ({ title, content, image }: PostFeed) => {
-  const { data } = await AuthInstance.post(`${router}/`, {
-    title,
-    content,
-    image,
-  });
-  return data;
-};
-
-export const patchUpdateFeed = async ({ title, content, image, id }: PostFeed) => {
-  const { data } = await AuthInstance.post(`${router}/${id}`, {
-    title,
-    content,
-    image,
-  });
-  return data;
+/** 어드민 커뮤니티 수정 - (feedId, feedContent={title, content, image}) */
+export const PatchFeedUpdateApi = async ({
+  feedId,
+  feedContent,
+}: {
+  feedId: string;
+  feedContent: FeedWriteReqType;
+}) => {
+  await AuthInstance.patch(`${router}/${feedId}`, feedContent);
 };

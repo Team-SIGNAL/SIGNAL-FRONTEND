@@ -5,11 +5,9 @@ const cookie = new Cookies();
 export const setCookie = (
   name: string,
   value: boolean | string,
-  expires: Date,
-  option: any = { path: "/" }
-) => cookie.set(name, value, { expires, ...option });
+  expires: Date
+) => cookie.set(name, value, { expires, path: "/" });
 
 export const getCookie = (name: string) => cookie.get(name);
 
-export const delCookie = (name: string, option: any = { path: "/" }) =>
-  cookie.remove(name, { ...option });
+export const delCookie = (name: string) => cookie.remove(name, { path: "/" });

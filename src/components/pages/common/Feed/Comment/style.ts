@@ -30,8 +30,12 @@ export const CommentButton = styled.button`
   border-radius: 8px;
   color: ${Color.white};
   cursor: pointer;
+  transition: 0.1s ease-in-out;
   &:active {
     filter: brightness(1.1);
+  }
+  &:disabled{
+    background-color: ${Color.gray[500]};
   }
 `;
 

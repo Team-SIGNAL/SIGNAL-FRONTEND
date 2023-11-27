@@ -4,14 +4,12 @@ import { Title } from "styles/text";
 
 export const FlexContainer = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-`
+`;
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  width: 80%;
+  width: 100%;
 `;
 export const Category = styled.div`
   display: flex;
@@ -21,6 +19,7 @@ export const Category = styled.div`
   justify-content: end;
   align-items: end;
   cursor: pointer;
+  width: 100%;
 `;
 
 export const CategoryTitle = styled(Title)`

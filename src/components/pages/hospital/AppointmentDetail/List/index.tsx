@@ -1,48 +1,37 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import * as _ from "./style";
-import { Body2, BodyLarge, BodyLarge2 } from "styles/text";
-import StateBadge from "../StateBadge";
+import ListArticle from "../ListArticle";
+import { useQuery } from "@tanstack/react-query";
+import { GetDateApi } from "utils/apis/reservation";
+import Loading from "components/common/Loading";
+import Error from "components/common/Error";
+import { BodyLarge } from "styles/text";
 
 function List() {
-  const { pathname, search } = useLocation();
+  const { pathname } = useLocation();
   const date = pathname.split("/")[2];
-  const nav = useNavigate();
 
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["GetDateApi", date],
+    queryFn: () => GetDateApi(date),
+    retry: 0,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    select: (data) => data.appointment_list,
+  });
+
+  if (isLoading) {
+    <Loading />;
+  } else if (isError) {
+    <Error />;
+  }
   return (
     <_.Container>
-      <_.DateList onClick={() => nav("?id=1")}>
-        <div>
-          <BodyLarge2>홍길동</BodyLarge2>
-          <Body2>-</Body2>
-          <BodyLarge>16세</BodyLarge>
-        </div>
-        <div>
-          <BodyLarge>17:30</BodyLarge>
-          <StateBadge state="Approval" />
-        </div>
-      </_.DateList>
-      <_.DateList onClick={() => nav("?id=2")}>
-        <div>
-          <BodyLarge2>홍길동</BodyLarge2>
-          <Body2>-</Body2>
-          <BodyLarge>16세</BodyLarge>
-        </div>
-        <div>
-          <BodyLarge>17:30</BodyLarge>
-          <StateBadge state="Approval" />
-        </div>
-      </_.DateList>
-      <_.DateList onClick={() => nav("?id=3")}>
-        <div>
-          <BodyLarge2>홍길동</BodyLarge2>
-          <Body2>-</Body2>
-          <BodyLarge>16세</BodyLarge>
-        </div>
-        <div>
-          <BodyLarge>17:30</BodyLarge>
-          <StateBadge state="StandBy" />
-        </div>
-      </_.DateList>
+      {!data?.length ? (
+        <BodyLarge>예약이 없습니다.</BodyLarge>
+      ) : (
+        data.map((v) => <ListArticle {...v} />)
+      )}
     </_.Container>
   );
 }

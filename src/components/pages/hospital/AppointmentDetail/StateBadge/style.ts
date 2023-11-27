@@ -4,9 +4,11 @@ import Color from "styles/color";
 
 export const Container = styled.div<StateBadgeProps>`
   background-color: ${({ state }) =>
-    state === "Approval"
+    state === "APPROVE"
       ? Color.primary[100]
-      : state === "StandBy" && Color.gray[500]};
+      : state === "WAIT"
+      ? Color.gray[500]
+      : "red"};
   color: ${Color.white};
   padding: 2px 5px;
   border-radius: 6px;

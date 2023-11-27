@@ -1,13 +1,13 @@
-import { postImageFileResType } from "types/attachment.type";
+import { AttachmentResType } from "./../../types/attachment.type";
 import { AuthInstance } from ".";
 
 const router = "/attachment";
 
-/** 이미지 업로드 axios prop */
-export const postImage = async (formData: FormData) => {
-  const { data }: postImageFileResType = await AuthInstance.post(
+/** 사진 등록 url */
+export const PostImageApi = async (imgMultipart: FormData) => {
+  const { data }: { data: AttachmentResType } = await AuthInstance.post(
     `${router}/`,
-    formData
+    imgMultipart
   );
   return data;
 };

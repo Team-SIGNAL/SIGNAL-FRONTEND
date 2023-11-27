@@ -1,34 +1,35 @@
 import * as _ from "./style";
 import Input from "components/common/Input";
 import TextArea from "components/common/TextArea";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import {
-  FeedContentAtom,
-  FeedIdAtom,
-  FeedImageAtom,
-  FeedTitleAtom,
-} from "atoms/feed";
+import { useRecoilState } from "recoil";
+import { FeedContentAtom, FeedShowImageAtom, FeedTitleAtom } from "atoms/feed";
 import { ChangeEvent, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { GetFeed } from "utils/apis/feed";
+import { useSearchParams } from "react-router-dom";
+import { GetFeedDetailApi } from "utils/apis/feed";
+import { useImageUpload } from "hooks/useImageUpload";
 
 function Content() {
   const [title, setTitle] = useRecoilState(FeedTitleAtom);
   const [content, setContent] = useRecoilState(FeedContentAtom);
-  const setFile = useSetRecoilState(FeedImageAtom);
+  const [image, setImage] = useRecoilState(FeedShowImageAtom);
 
-  const id = useRecoilValue(FeedIdAtom);
+  const [seachParams] = useSearchParams();
+  const id = seachParams.get("id");
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      setFile(e.target.files[0]);
+      uploadImage(e.target.files[0]);
     }
   };
 
+  const { uploadImage } = useImageUpload((image: string) => {
+    setImage(image);
+  });
+
   const { refetch, data } = useQuery({
-    queryKey: ["getFeed", { id }],
-    queryFn: () => GetFeed({ id }),
-    retryOnMount: false,
+    queryKey: ["getFeed", id],
+    queryFn: () => GetFeedDetailApi(id ?? ""),
     retry: 1,
     enabled: false,
   });
@@ -41,14 +42,15 @@ function Content() {
 
   useEffect(() => {
     if (data) {
-      setTitle(data.feed.title);
-      setContent(data.feed.content);
-      setFile(data.feed.img);
+      setTitle(data.title);
+      setContent(data.content);
+      setImage(data.image);
     }
-  }, [data, setContent, setFile, setTitle]);
+  }, [data, setContent, setTitle, setImage]);
 
   return (
     <_.Container>
+      {image && <_.ShowImage src={image} />}
       <Input
         label="제목"
         placeholder="제목"

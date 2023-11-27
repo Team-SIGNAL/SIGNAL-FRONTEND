@@ -2,20 +2,19 @@ import { summaryDefaultImg } from "assets/index";
 import * as _ from "./style";
 import { Body2, BodyLarge2 } from "styles/text";
 import { useLocation, useNavigate } from "react-router-dom";
-import { FeedListDataType } from "types/feed.type";
+import { FeedListType } from "types/feed.type";
 
-function ArticleFeed({ img, title, date, id, user }: FeedListDataType) {
+function ArticleFeed({ image, title, id, name }: FeedListType) {
   const nav = useNavigate();
   const { pathname } = useLocation();
 
   return (
     <_.Container onClick={() => nav(`${pathname}/${id}`)}>
-      <_.SummaryImg src={img ? img : summaryDefaultImg} />
+      <_.SummaryImg src={image ? image : summaryDefaultImg} />
       <div>
-        <Body2>{date}</Body2>
-        <Body2>{user}</Body2>
+        <BodyLarge2>{title}</BodyLarge2>
+        <Body2>{name}</Body2>
       </div>
-      <BodyLarge2>{title}</BodyLarge2>
     </_.Container>
   );
 }
