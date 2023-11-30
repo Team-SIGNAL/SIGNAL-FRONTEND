@@ -1,11 +1,7 @@
 import * as _ from "./style";
 import { Button } from "styles/button";
-import { useRecoilValue } from "recoil";
-import {
-  FeedContentAtom,
-  FeedShowImageAtom,
-  FeedTitleAtom,
-} from "atoms/feed";
+import { useRecoilValue, useResetRecoilState } from "recoil";
+import { FeedContentAtom, FeedShowImageAtom, FeedTitleAtom } from "atoms/feed";
 import { useMutation } from "@tanstack/react-query";
 import { alertError, alertSuccess } from "utils/toastify";
 import { PatchFeedUpdateApi, PostAdminWriteApi } from "utils/apis/feed";
@@ -18,12 +14,18 @@ function Submit() {
   const title = useRecoilValue(FeedTitleAtom);
   const content = useRecoilValue(FeedContentAtom);
   const image = useRecoilValue(FeedShowImageAtom);
+  const resetTitle = useResetRecoilState(FeedTitleAtom);
+  const resetContent = useResetRecoilState(FeedContentAtom);
+  const reseimage = useResetRecoilState(FeedShowImageAtom);
   const nav = useNavigate();
 
   const { mutate: postFeedMutate } = useMutation(PostAdminWriteApi, {
     onSuccess: () => {
       alertSuccess("게시글 작성에 성공하였습니다.");
       nav(`/${pathname.split("/")[1]}/feed`);
+      resetTitle();
+      reseimage();
+      resetContent();
     },
     onError: () => {
       alertError("오류가 발생했습니다. 관리자에게 문의해주세요");
@@ -33,6 +35,9 @@ function Submit() {
     onSuccess: () => {
       alertSuccess("수정 성공하였습니다.");
       nav(`/${pathname.split("/")[1]}/feed/${id}`);
+      resetTitle();
+      reseimage();
+      resetContent();
     },
     onError: () => {
       alertError("오류가 발생했습니다. 관리자에게 문의해주세요");
