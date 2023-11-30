@@ -18,8 +18,6 @@ function Sidebar() {
     queryKey: ["getInfo"],
     queryFn: GetUserInfoApi,
     retry: 0,
-    refetchOnMount: false,
-    refetchOnWindowFocus: false,
   });
 
   useEffect(() => {

@@ -15,7 +15,7 @@ import { PostSignUpApi } from "utils/apis/admin";
 import { SignUpReqType } from "types/admin.type";
 
 const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*]).{8,32}$/;
-const numberRegex = /^\d{3}-\d{3,4}-\d{4}$/;
+const numberRegex = /^\d{2,3}-\d{3,4}-\d{4}$/;
 
 /** 회원가입 모답 */
 function SignUp() {
@@ -45,6 +45,14 @@ function SignUp() {
   const { mutate: signupMutate } = useMutation(PostSignUpApi, {
     onSuccess: () => {
       alertSuccess("회원가입에 성공하였습니다.");
+      setSignupValue({
+        name: "",
+        phone: "",
+        account_id: "",
+        password: "",
+        address: "",
+      });
+      setPasswordCheck("");
       setSignupModal(false);
       signinModal(true);
     },
@@ -68,7 +76,7 @@ function SignUp() {
     ) {
       alertWarning("아이디는 5~12글자 사이입니다.");
     } else if (!numberRegex.test(signupValue.phone)) {
-      alertWarning("전화번호 형식은 000-0000-0000입니다.");
+      alertWarning("전화번호 형식은 00-000-0000입니다.");
     } else if (
       signupValue.password.length < 8 ||
       signupValue.password.length > 32 ||
@@ -107,7 +115,7 @@ function SignUp() {
             />
             <Input
               label="병원 전화번호"
-              placeholder="010-1234-1234"
+              placeholder="042-123-1234"
               onChange={onChange}
               value={signupValue.phone}
               name="phone"

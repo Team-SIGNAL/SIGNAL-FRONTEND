@@ -38,24 +38,29 @@ function Profile() {
     <Error />;
   }
   return (
-    <_.Container>
-      <_.ProfileContainer>
-        <img src={userInfo?.profile ?? defaultProfileImg} alt="profile img" />
-        <_.InfoContainer>
-          <Title>{userInfo?.name}</Title>
-          <BodyLarge>{userInfo?.phone}</BodyLarge>
-          <BodyLarge>{userInfo?.address}</BodyLarge>
-        </_.InfoContainer>
-      </_.ProfileContainer>
-      <Button
-        width="fit-content"
-        onClick={logoutOnClick}
-        backColor={Color.gray[300]}
-        color={Color.gray[500]}
-      >
-        로그아웃
-      </Button>
-    </_.Container>
+    <_.FlexContainer>
+      <_.Container>
+        <_.ProfileContainer>
+          <img src={userInfo?.profile ?? defaultProfileImg} alt="profile img" />
+          <_.InfoContainer>
+            <Title>{userInfo?.name}</Title>
+            <BodyLarge>{userInfo?.phone}</BodyLarge>
+            <BodyLarge>{userInfo?.address}</BodyLarge>
+          </_.InfoContainer>
+        </_.ProfileContainer>
+        <Button
+          width="fit-content"
+          onClick={logoutOnClick}
+          backColor={Color.gray[300]}
+          color={Color.gray[500]}
+        >
+          로그아웃
+        </Button>
+      </_.Container>
+      {userInfo?.hospital_image && (
+        <_.Image alt={userInfo.name} src={userInfo.hospital_image} />
+      )}
+    </_.FlexContainer>
   );
 }
 

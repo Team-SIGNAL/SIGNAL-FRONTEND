@@ -1,12 +1,13 @@
 import * as _ from "./style";
 import { Body, Body2, TitleLarge } from "styles/text";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { useLocation, useNavigate } from "react-router-dom";
 import Loading from "components/common/Loading";
 import Error from "components/common/Error";
 import ReportModal from "components/common/Report";
-import { GetFeedDetailApi } from "utils/apis/feed";
+import { DeleteFeedApi, GetFeedDetailApi } from "utils/apis/feed";
 import { confirmDialog } from "utils/confirm";
+import { alertError, alertSuccess } from "utils/toastify";
 
 function Content() {
   const { pathname } = useLocation();
@@ -24,14 +25,26 @@ function Content() {
     refetchOnWindowFocus: false,
   });
 
+  const { mutate: deleteFeed } = useMutation(DeleteFeedApi, {
+    onSuccess: () => {
+      alertSuccess("게시글이 삭제되었습니다.");
+      nav("/hospital/feed?tag=HOSPITAL");
+    },
+    onError: () => {
+      alertError("삭제에 실해하였습니다. 관리자에게 문의해주세요.");
+    },
+  });
+
   const onUpdate = () => {
     nav(`/hospital/feed/write?id=${id}`);
   };
 
   const onDelete = () => {
-    confirmDialog("진짜 삭제하시겠습니까?").then(() => {
-      // 커뮤니티 삭제 api
-    });
+    confirmDialog("진짜 삭제하시겠습니까?")
+      .then(() => {
+        deleteFeed(id);
+      })
+      .catch(() => {});
   };
 
   if (isLoading) {

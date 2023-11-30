@@ -72,6 +72,7 @@ function SignIn() {
               onChange={onChange}
               value={signInValue.password}
               name="password"
+              type="password"
             />
           </_.InputContainer>
           <_.ButtonContainer>
