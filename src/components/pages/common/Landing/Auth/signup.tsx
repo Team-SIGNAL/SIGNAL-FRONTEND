@@ -115,14 +115,14 @@ function SignUp() {
             />
             <Input
               label="병원 전화번호"
-              placeholder="042-123-1234"
+              placeholder="병원 전화번호를 입력해주세요 (-로 구분)"
               onChange={onChange}
               value={signupValue.phone}
               name="phone"
             />
             <Input
               label="병원 주소"
-              placeholder="대전광역시 유성구 가정북로 76 우정관"
+              placeholder="병원 주소를 입력해주세요"
               onChange={onChange}
               value={signupValue.address}
               name="address"
