@@ -12,7 +12,7 @@ function Search() {
     <_.Container>
       <Button
         width="fit-content"
-        backColor={Color.gray[400]}
+        backColor={Color.primary[100]}
         onClick={() => nav(`${pathname}/write`)}
       >
         작성

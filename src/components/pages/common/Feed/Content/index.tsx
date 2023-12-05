@@ -4,8 +4,11 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { useLocation, useNavigate } from "react-router-dom";
 import Loading from "components/common/Loading";
 import Error from "components/common/Error";
-import ReportModal from "components/common/Report";
-import { DeleteFeedApi, GetFeedDetailApi } from "utils/apis/feed";
+import {
+  DeleteFeedApi,
+  GetFeedDetailApi,
+  PatchReportApi,
+} from "utils/apis/feed";
 import { confirmDialog } from "utils/confirm";
 import { alertError, alertSuccess } from "utils/toastify";
 
@@ -35,6 +38,14 @@ function Content() {
     },
   });
 
+  const { mutate: patchReport } = useMutation(PatchReportApi, {
+    onSuccess: () => {
+      alertSuccess("게시글이 신고되었습니다. 관리자가 확인 후 조치하겠습니다.");
+    },
+    onError: () => {
+      alertError("신고에 실해하였습니다. 관리자에게 문의해주세요.");
+    },
+  });
   const onUpdate = () => {
     nav(`/hospital/feed/write?id=${id}`);
   };
@@ -43,6 +54,13 @@ function Content() {
     confirmDialog("진짜 삭제하시겠습니까?")
       .then(() => {
         deleteFeed(id);
+      })
+      .catch(() => {});
+  };
+  const onReport = () => {
+    confirmDialog("신고하시겠습니까?")
+      .then(() => {
+        patchReport(id);
       })
       .catch(() => {});
   };
@@ -70,7 +88,11 @@ function Content() {
           </_.TitleContainer>
           {feed.image && <_.FeedImg src={feed.image} alt="feed Img" />}
           <_.FeedContent>{feed.content}</_.FeedContent>
-          {!feed.mine && <ReportModal />}
+          {!feed.mine && (
+            <_.ReportButtonContainer>
+              <Body2 onClick={onReport}>신고</Body2>
+            </_.ReportButtonContainer>
+          )}
         </>
       )}
     </_.Container>
