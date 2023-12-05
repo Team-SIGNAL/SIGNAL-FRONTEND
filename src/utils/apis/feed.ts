@@ -52,3 +52,9 @@ export const PatchFeedUpdateApi = async ({
 export const DeleteFeedApi = async (feedId: string) => {
   await AuthInstance.delete(`${router}/${feedId}`);
 };
+
+/** 게시글 신고 */
+export const PatchReportApi = async(feedId:string)=>{
+  await AuthInstance.patch(`${router}/report/${feedId}`);
+
+}
