@@ -37,6 +37,7 @@ export type InfoResType = {
   profile: string; // 프로필 이미지 url
   auth_status: AuthStatusType; // 병원 인증 여부
   address: string;
+  hospital_image?: string;
 };
 
 export type PatchHospitalAuthReqType = {

@@ -43,3 +43,9 @@ export const Content = styled.pre`
   font-weight: 400;
   line-height: 24px;
 `;
+
+export const VideoPlayer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+`;

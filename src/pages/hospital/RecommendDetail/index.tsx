@@ -12,7 +12,7 @@ function RecommendDetail() {
   return (
     <_.Container>
       <DetailHeader cat={cat} />
-      <Content id={id}/>
+      <Content id={id} />
     </_.Container>
   );
 }

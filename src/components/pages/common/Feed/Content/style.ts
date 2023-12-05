@@ -58,3 +58,12 @@ export const ReportContainer = styled.div`
     width: 12px;
   }
 `
+
+export const ReportButtonContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: end; 
+  >p{
+    color: ${Color.gray[500]};
+  }
+`
