@@ -1,8 +1,6 @@
 import { useState } from "react";
 import * as _ from "./style";
 import Modal from "../Modal";
-import Report from "assets/icon/report";
-import { Body } from "styles/text";
 import { Button } from "styles/button";
 import Color from "styles/color";
 import TextArea from "../TextArea";

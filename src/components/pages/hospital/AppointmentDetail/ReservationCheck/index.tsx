@@ -13,7 +13,9 @@ function ReservationCheck({ id }: ReservationCheckProps) {
   const [reason, setReson] = useState("");
 
   const { mutate: PatchReservationMutate } = useMutation(PatchReservationApi, {
-    onSuccess: () => {},
+    onSuccess: () => {
+      window.location.reload();
+    },
     onError: () => {},
   });
 

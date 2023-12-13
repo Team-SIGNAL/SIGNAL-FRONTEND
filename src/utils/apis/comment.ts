@@ -1,7 +1,7 @@
 import { FeedCommentResType, FeedCommentWriteType } from "types/comment.type";
 import { AuthInstance } from ".";
 
-const router = "/comment"
+const router = "/comment";
 /** 커뮤니티 댓글 작성 - (feedId, feedComment={content}) */
 export const PostFeedCommentWriteApi = async ({
   feedId,

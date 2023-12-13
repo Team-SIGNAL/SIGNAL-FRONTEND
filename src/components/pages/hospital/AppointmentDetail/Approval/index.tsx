@@ -14,8 +14,6 @@ function Approval({ id }: AprovalProps) {
     queryKey: ["GetReservationDetailApi", id],
     queryFn: () => GetReservationDetailApi(id),
     retry: 0,
-    refetchOnMount: false,
-    refetchOnWindowFocus: false,
   });
   const today = new Date();
   const birthday = new Date(data?.birth!);

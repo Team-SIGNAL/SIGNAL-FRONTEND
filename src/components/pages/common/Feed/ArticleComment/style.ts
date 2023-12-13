@@ -10,7 +10,8 @@ export const Container = styled.div`
 `;
 export const UserContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
 `;
 export const ReportContainer = styled.div`
   display: flex;
@@ -25,4 +26,10 @@ export const ReportSVG = styled(Report)`
 
 export const MoreSVG = styled(More)`
   width: 10px;
+`;
+
+export const ProfileImg = styled.img`
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
 `;

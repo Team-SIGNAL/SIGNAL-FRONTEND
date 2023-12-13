@@ -15,8 +15,6 @@ function List() {
     queryKey: ["GetDateApi", date],
     queryFn: () => GetDateApi(date),
     retry: 0,
-    refetchOnMount: false,
-    refetchOnWindowFocus: false,
     select: (data) => data.appointment_list,
   });
 

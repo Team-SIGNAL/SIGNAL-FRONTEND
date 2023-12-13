@@ -11,6 +11,7 @@ export const Container = styled.div`
   align-items: center;
 
   position: fixed;
+  z-index: 10;
 `;
 export const Menu = styled.div`
   display: flex;

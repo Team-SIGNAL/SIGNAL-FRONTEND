@@ -11,15 +11,17 @@ export const Container = styled.div`
   gap: 20px;
   width: 100%;
 `;
-export const Category = styled.div`
+export const Category = styled.div<{ image?: any }>`
   display: flex;
-  position: relative;
   height: 200px;
   border-radius: 10px;
   justify-content: end;
   align-items: end;
   cursor: pointer;
   width: 100%;
+  background-image: url(${(props) => props.image});
+  background-size: 100% 200px;
+  background-repeat: no-repeat;
 `;
 
 export const CategoryTitle = styled(Title)`
@@ -27,7 +29,6 @@ export const CategoryTitle = styled(Title)`
   color: ${Color.white};
 `;
 export const Background = styled.img`
-  position: absolute;
   width: 100%;
   height: 200px;
   border-radius: 10px;

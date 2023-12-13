@@ -18,8 +18,8 @@ function Landing() {
           <img src={landingMock} alt="landing page 목업사진" />
         </_.MainContainer>
         <_.IntroductionContainer>
-          {IntroduceData.map((data) => (
-            <_.EachInroduction key={data.title}>
+          {IntroduceData.map((data,i) => (
+            <_.EachInroduction key={data.title} delay={i}>
               <img src={data.img} alt={data.title} />
               <_.IntroductionContent>
                 <Title>{data.title}</Title>
